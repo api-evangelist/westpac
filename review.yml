@@ -1,0 +1,88 @@
+aid: westpac
+name: Westpac Banking Corporation
+review:
+  question: Does Westpac expose a confirmed live public Consumer Data Right (CDR) Product Reference Data API, and does it run a broader self-serve developer portal?
+  answer: true
+  date: '2026-07-20'
+  reviewer: API Evangelist
+  cdrPrdConfirmed: true
+  developerPortalSelfServe: false
+findings:
+  summary: |
+    Westpac Banking Corporation, as a Big Four Australian ADI and designated CDR
+    data holder, exposes a genuine public, unauthenticated Product Reference Data
+    (PRD) API. The endpoint was confirmed LIVE: an unauthenticated GET to
+    https://digital-api.westpac.com.au/cds-au/v1/banking/products with header
+    "x-v: 5" returned HTTP 200 and a JSON body with a data.products array and
+    meta.totalRecords = 64 (32 pages), covering products across Westpac Group
+    brands (Westpac, and by group also St.George / BankSA / Bank of Melbourne /
+    RAMS surfaces). The server honours x-v versions 4 and 5; requesting x-v 3
+    returns a well-formed CDS 406 "Unsupported Version" error, confirming
+    Consumer Data Standards-compliant version negotiation. Westpac states on its
+    open-banking product-api page that "no security or other headers are required
+    to call this API" and that it is "available to everyone with no restrictions
+    on use."
+
+    Westpac does NOT operate a broad, self-serve developer portal in the style of
+    NAB (developer.nab.com.au) or CommBank (CommBank Developer Portal), and unlike
+    Up (up.com.au) it publishes no personal-banking developer API. Its public API
+    surface is limited to the CDR-mandated PRD endpoint plus a single human-readable
+    documentation page under the About Westpac > Innovation > Open Banking hub. All
+    consumer/account data sharing beyond product reference data flows through the
+    CDR's authenticated, consent-driven Accredited Data Recipient (ADR) model
+    rather than a public API key portal.
+  authModel: |
+    Public PRD endpoint is fully unauthenticated (no API key, no OAuth). Broader
+    consumer data sharing under CDR uses the OAuth2 / OIDC-based, FAPI-hardened
+    ADR consent model operated through the CDR ecosystem (register + accreditation),
+    not a Westpac-issued developer credential.
+  specProvenance: |
+    The harvested OpenAPI (openapi/westpac-cds-banking-products-openapi.yml) is a
+    community-adapted rendering of the shared DSB Consumer Data Standards "Get
+    Products" contract (source: LukePrior/Australian-Open-Banking-Data-Database,
+    itself adapted from apigee/consumer-data-standards-au). Its servers block
+    lists Westpac's exact base URL (https://digital-api.westpac.com.au/cds-au/v1).
+    This is the SHARED CDS standard surface, NOT a Westpac-proprietary contract;
+    Westpac publishes no bank-specific OpenAPI/Swagger of its own.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://digital-api.westpac.com.au/cds-au/v1/banking/products
+      documented: true
+      confirmedStatus: 200
+      note: Confirmed 200 with x-v 5; 64 product records. Unauthenticated GET.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket surface; CDR PRD is REST-only.
+  endpointsConfirmedRest:
+    - GET https://digital-api.westpac.com.au/cds-au/v1/banking/products
+    - GET https://digital-api.westpac.com.au/cds-au/v1/banking/products/{productId}
+  probes:
+    - request: 'GET /cds-au/v1/banking/products?page-size=2  (x-v: 5)'
+      status: 200
+      note: data.products array present; meta.totalRecords=64, totalPages=32.
+    - request: 'GET /cds-au/v1/banking/products?page-size=1  (x-v: 3)'
+      status: 406
+      note: CDS UnsupportedVersion error; versions available 4 and 5. Confirms version negotiation.
+sources:
+  - url: https://www.westpac.com.au/about-westpac/innovation/open-banking/product-api/
+    type: Documentation
+    note: Publishes the PRD base URL and states no security headers are required.
+  - url: https://www.westpac.com.au/about-westpac/innovation/open-banking/
+    type: DeveloperPortal
+    note: Open-banking documentation hub; not a self-serve API key portal.
+  - url: https://consumerdatastandardsaustralia.github.io/standards/
+    type: APIReference
+    note: DSB Consumer Data Standards the PRD API conforms to.
+  - url: https://github.com/westpac
+    type: GitHubOrganization
+    note: 'Verified: "Westpac Group" / "Westpac Banking Group''s Open Source Repository"; no public repos.'
+actions:
+  openapiPath: openapi/westpac-cds-banking-products-openapi.yml
+  apisYmlUpdated: true
+  reason: |
+    Bootstrapped identity plus the confirmed live CDR PRD API. Harvested the
+    shared DSB CDS Get Products OpenAPI (community-adapted, provenance noted) as
+    the closest real, publicly downloadable contract for the surface; Westpac
+    ships no proprietary spec.
