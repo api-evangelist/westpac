@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/westpac-cds-banking-products-openapi.yml
+note: >-
+  No official hosted or remote MCP server is published by Westpac. This is a
+  DERIVED candidate tool list mapping the two public CDR Product Reference Data
+  operations to MCP tools. The endpoints are unauthenticated, which makes them a
+  clean candidate for a read-only MCP surface.
+server:
+  name: westpac-cdr-products
+  transport: http
+  url: null
+tools:
+  - name: list_products
+    description: >-
+      List banking products Westpac currently offers to the market. Supports
+      filtering by effectivity, updated-since, brand, and product-category, with
+      page-number pagination. Requires the x-v header (use 5).
+    source_operation: openapi/westpac-cds-banking-products-openapi.yml#listProducts
+  - name: get_product_detail
+    description: >-
+      Get full detail for a single product by productId, including fees, deposit
+      and lending rates, features, constraints, eligibility, and bundles.
+      Requires the x-v header (use 5).
+    source_operation: openapi/westpac-cds-banking-products-openapi.yml#getProductDetail

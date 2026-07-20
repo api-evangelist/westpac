@@ -1,0 +1,7 @@
+generated: '2026-07-20'
+method: generated
+skills:
+  - file: westpac-browse-products.md
+    name: Browse Westpac banking products
+    api: openapi/westpac-cds-banking-products-openapi.yml
+    operations: [listProducts, getProductDetail]

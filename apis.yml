@@ -52,6 +52,10 @@ apis:
     header (versions 4 and 5) is honoured. Conforms to the DSB Consumer Data Standards
     Get Products / Get Product Detail contract.
 common:
+- type: VulnerabilityDisclosure
+  url: security/westpac-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/westpac-domain-security.yml
 - type: Website
   url: https://www.westpac.com.au/
 - type: DeveloperPortal
@@ -66,6 +70,28 @@ common:
   url: https://www.westpac.com.au/privacy/privacy-statement/
 - type: TermsOfService
   url: https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/aw/WBC_CDR_Policy.pdf
+- type: Security
+  url: https://www.westpac.com.au/security/how-to-report/responsible-disclosure.html
+- type: Authentication
+  url: authentication/westpac-authentication.yml
+- type: Conventions
+  url: conventions/westpac-conventions.yml
+- type: ErrorCatalog
+  url: errors/westpac-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/westpac-lifecycle.yml
+- type: Conformance
+  url: conformance/westpac-conformance.yml
+- type: DataModel
+  url: data-model/westpac-data-model.yml
+- type: Overlay
+  url: overlays/westpac-cds-banking-products-overlay.yaml
+- type: MCPServer
+  url: mcp/westpac-mcp.yml
+- type: AgentSkill
+  url: skills/westpac-browse-products.md
+- type: LLMsTxt
+  url: llms/westpac-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

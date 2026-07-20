@@ -1,0 +1,30 @@
+# Westpac Banking Corporation
+
+> Westpac Banking Corporation is Australia's oldest bank (founded 1817 as the Bank of New South Wales) and one of the "Big Four" ADIs. As a designated Consumer Data Right (CDR) data holder it exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the DSB Consumer Data Standards. This is the only public API surface; consumer/account data sharing runs through the CDR Accredited Data Recipient consent model, not a public developer portal.
+
+## APIs
+
+- [Westpac CDR Product Reference Data API](https://www.westpac.com.au/about-westpac/innovation/open-banking/product-api/): Public, unauthenticated banking product catalogue (rates, fees, features, eligibility) under Australia's CDR. Base URL https://digital-api.westpac.com.au/cds-au/v1 ; send header x-v: 5. Two operations: Get Products (listProducts) and Get Product Detail (getProductDetail).
+
+## Specs
+
+- [OpenAPI (Get Products / Get Product Detail)](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/openapi/westpac-cds-banking-products-openapi.yml): Community-adapted rendering of the shared DSB Consumer Data Standards Get Products contract; Westpac's base URL is one of the data-holder servers.
+- [OpenAPI Overlay (AE enhancements)](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/overlays/westpac-cds-banking-products-overlay.yaml)
+
+## Artifacts
+
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/authentication/westpac-authentication.yml): unauthenticated public PRD surface.
+- [API conventions](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/conventions/westpac-conventions.yml): versioning (x-v header), pagination, error envelope.
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/errors/westpac-problem-types.yml): CDS error conditions (406 UnsupportedVersion confirmed).
+- [Lifecycle](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/lifecycle/westpac-lifecycle.yml): CDS version negotiation (versions 4 and 5).
+- [Conformance](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/conformance/westpac-conformance.yml): Consumer Data Standards conformance.
+- [Data model / ERD](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/data-model/westpac-data-model.yml)
+- [MCP candidate server](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/mcp/westpac-mcp.yml)
+- [Agent Skill: Browse Westpac banking products](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/skills/westpac-browse-products.md)
+
+## Docs
+
+- [Open Banking hub](https://www.westpac.com.au/about-westpac/innovation/open-banking/)
+- [Product API documentation](https://www.westpac.com.au/about-westpac/innovation/open-banking/product-api/)
+- [DSB Consumer Data Standards](https://consumerdatastandardsaustralia.github.io/standards/)
+- [CDR Policy (PDF)](https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/aw/WBC_CDR_Policy.pdf)

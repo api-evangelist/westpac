@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: searched
+note: >-
+  Probed the standard /.well-known/ discovery surface on Westpac's website and
+  public PRD API host. No documents returned 200; recorded for auditability. The
+  CDR ADR OIDC discovery lives on the accredited-recipient InfoSec host, not the
+  public PRD host, so no openid-configuration is exposed here. No WellKnown
+  canonical pointer is emitted (nothing found).
+hosts:
+  - host: https://www.westpac.com.au
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://digital-api.westpac.com.au
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /cds-au/v1/.well-known/openid-configuration
+        status: 404

@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/westpac-cds-banking-products-openapi.yml
+docs: https://www.westpac.com.au/about-westpac/innovation/open-banking/product-api/
+summary:
+  types: []
+  api_key_in: []
+  oauth2_flows: []
+  note: >-
+    The Westpac CDR Product Reference Data OpenAPI declares NO securitySchemes and
+    applies NO security requirement to either operation. Westpac's own
+    documentation confirms "no security or other headers are required to call this
+    API" beyond the mandatory x-v version header. The public PRD surface is
+    unauthenticated by design under the Consumer Data Standards.
+schemes: []
+public_access:
+  authenticated: false
+  detail: >-
+    listProducts and getProductDetail are open, unauthenticated GET endpoints.
+consumer_data_sharing:
+  detail: >-
+    Access to consumer/account data beyond product reference data is NOT available
+    through this public API. It flows through the CDR's Accredited Data Recipient
+    (ADR) model, which uses an OAuth 2.0 / OpenID Connect, FAPI-hardened consent
+    flow operated through the CDR ecosystem (accreditation + the CDR Register),
+    not a Westpac-issued developer credential. That surface is out of scope for
+    this public PRD contract.

@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Westpac CDR Product Reference Data API
+  version: 1.0.0
+extends: openapi/westpac-cds-banking-products-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: westpac
+      x-apievangelist-standard: cdr-consumer-data-standards
+      x-apievangelist-auth: none-public
+      x-apievangelist-confirmed-version: '5'
+      x-apievangelist-notes: >-
+        Community-adapted rendering of the shared DSB Consumer Data Standards Get
+        Products contract; Westpac's exact base URL is one of many data-holder
+        servers in the original. Confirmed live at x-v 5 with 64 product records.
+  - target: $.servers
+    update:
+      - url: https://digital-api.westpac.com.au/cds-au/v1
+        description: Westpac Banking Corporation (Westpac) — confirmed live PRD host
+  - target: $.paths['/banking/products'].get
+    update:
+      x-apievangelist-tool: list_products
+      x-apievangelist-agent-access: connected-read
+  - target: $.paths['/banking/products/{productId}'].get
+    update:
+      x-apievangelist-tool: get_product_detail
+      x-apievangelist-agent-access: connected-read
