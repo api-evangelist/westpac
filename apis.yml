@@ -23,7 +23,7 @@ tags:
 - Product Reference Data
 - ADI
 created: '2026-07-20'
-modified: '2026-07-20'
+modified: '2026-07-21'
 specificationVersion: '0.19'
 apis:
 - aid: westpac:westpac-cdr-product-reference-data-api
@@ -42,15 +42,172 @@ apis:
     type: Documentation
   - url: https://consumerdatastandardsaustralia.github.io/standards/
     type: APIReference
-  - url: openapi/westpac-cds-banking-products-openapi.yml
+  - url: openapi/westpac-cds-banking-openapi.yml
     type: OpenAPI
-  description: Public, unauthenticated Product Reference Data (PRD) API exposing Westpac's
-    banking product catalogue (rates, fees, features, eligibility) under Australia's
-    Consumer Data Right. Confirmed live returning HTTP 200 with a data.products array,
-    64 total product records across Westpac Group brands, served at supported version
-    x-v 5. No security or other headers are required to call this API; only the x-v
-    header (versions 4 and 5) is honoured. Conforms to the DSB Consumer Data Standards
-    Get Products / Get Product Detail contract.
+  description: PUBLIC, unauthenticated Product Reference Data (PRD) surface exposing
+    Westpac's banking product catalogue (rates, fees, features, eligibility) under
+    Australia's Consumer Data Right. Covers the DSB Get Products (/banking/products)
+    and Get Product Detail (/banking/products/{productId}) contract, served at the
+    confirmed live host digital-api.westpac.com.au and honouring x-v versions 4 and
+    5 (calls without a supported x-v return HTTP 406). No authentication or headers
+    beyond x-v are required. Conforms to the shared DSB Consumer Data Standards CDR
+    Banking API v1.36.0, harvested verbatim into the wired OpenAPI.
+- aid: westpac:westpac-cdr-accounts-balances-api
+  name: Westpac Banking Corporation CDR Accounts & Balances API
+  tags:
+  - CDR
+  - Open Banking
+  - Accounts
+  - Balances
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.westpac.com.au/about-westpac/innovation/open-banking/
+  baseURL: https://digital-api.westpac.com.au/cds-au/v1/banking/accounts
+  properties:
+  - url: https://www.westpac.com.au/about-westpac/innovation/open-banking/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/
+    type: APIReference
+  - url: openapi/westpac-cds-banking-openapi.yml
+    type: OpenAPI
+  description: Consumer-AUTHORIZED CDR surface covering the DSB Get Accounts, Get Bulk
+    Balances, Get Account Balance and Get Account Detail contracts (/banking/accounts,
+    /banking/accounts/balances, /banking/accounts/{accountId}/balance and
+    /banking/accounts/{accountId}). Unlike the public Product Reference Data surface,
+    these endpoints return a customer's own account and balance data only through the
+    Consumer Data Right accredited-data-recipient (ADR) model over the MTLS holder
+    channel with an active consent; the public digital-api host returns HTTP 404 to
+    unauthenticated callers. Conforms to the shared DSB CDR Banking API v1.36.0.
+- aid: westpac:westpac-cdr-transactions-api
+  name: Westpac Banking Corporation CDR Transactions API
+  tags:
+  - CDR
+  - Open Banking
+  - Transactions
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.westpac.com.au/about-westpac/innovation/open-banking/
+  baseURL: https://digital-api.westpac.com.au/cds-au/v1/banking/accounts/{accountId}/transactions
+  properties:
+  - url: https://www.westpac.com.au/about-westpac/innovation/open-banking/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/
+    type: APIReference
+  - url: openapi/westpac-cds-banking-openapi.yml
+    type: OpenAPI
+  description: Consumer-AUTHORIZED CDR surface covering the DSB Get Transactions For
+    Account and Get Transaction Detail contracts
+    (/banking/accounts/{accountId}/transactions and .../transactions/{transactionId}).
+    Returns a consenting customer's transaction history and per-transaction detail
+    only through the Consumer Data Right accredited-data-recipient model over the MTLS
+    holder channel; unauthenticated calls to the public digital-api host return HTTP
+    404. Conforms to the shared DSB Consumer Data Standards CDR Banking API v1.36.0.
+- aid: westpac:westpac-cdr-direct-debits-scheduled-payments-api
+  name: Westpac Banking Corporation CDR Direct Debits & Scheduled Payments API
+  tags:
+  - CDR
+  - Open Banking
+  - Direct Debits
+  - Scheduled Payments
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.westpac.com.au/about-westpac/innovation/open-banking/
+  baseURL: https://digital-api.westpac.com.au/cds-au/v1/banking/accounts/direct-debits
+  properties:
+  - url: https://www.westpac.com.au/about-westpac/innovation/open-banking/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/
+    type: APIReference
+  - url: openapi/westpac-cds-banking-openapi.yml
+    type: OpenAPI
+  description: Consumer-AUTHORIZED CDR surface covering the DSB Get Direct Debits and
+    Get Scheduled Payments contracts (/banking/accounts/{accountId}/direct-debits,
+    /banking/accounts/direct-debits, /banking/accounts/{accountId}/payments/scheduled
+    and /banking/payments/scheduled). Returns a consenting customer's authorised
+    direct-debit and scheduled-payment arrangements only through the Consumer Data
+    Right accredited-data-recipient model over the MTLS holder channel; unauthenticated
+    calls to the public digital-api host return HTTP 404. Conforms to the shared DSB
+    CDR Banking API v1.36.0.
+- aid: westpac:westpac-cdr-payees-api
+  name: Westpac Banking Corporation CDR Payees API
+  tags:
+  - CDR
+  - Open Banking
+  - Payees
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.westpac.com.au/about-westpac/innovation/open-banking/
+  baseURL: https://digital-api.westpac.com.au/cds-au/v1/banking/payees
+  properties:
+  - url: https://www.westpac.com.au/about-westpac/innovation/open-banking/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/
+    type: APIReference
+  - url: openapi/westpac-cds-banking-openapi.yml
+    type: OpenAPI
+  description: Consumer-AUTHORIZED CDR surface covering the DSB Get Payees and Get
+    Payee Detail contracts (/banking/payees and /banking/payees/{payeeId}). Returns
+    a consenting customer's saved payee list and per-payee detail only through the
+    Consumer Data Right accredited-data-recipient model over the MTLS holder channel;
+    unauthenticated calls to the public digital-api host return HTTP 404. Conforms
+    to the shared DSB Consumer Data Standards CDR Banking API v1.36.0.
+- aid: westpac:westpac-payway-rest-api
+  name: Westpac PayWay REST API
+  tags:
+  - Payments
+  - Card Payments
+  - Payment Gateway
+  - Merchants
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.payway.com.au/docs/rest.html
+  baseURL: https://api.payway.com.au/rest/v1
+  properties:
+  - url: https://www.payway.com.au/docs/rest.html
+    type: Documentation
+  - url: https://www.payway.com.au/docs/api-developers-guide/
+    type: GettingStarted
+  - url: https://www.westpac.com.au/business-banking/merchants-and-payments/online-payments/payway-api/
+    type: SignUp
+  description: First-party Westpac payment API (beyond CDR). PayWay is Westpac's
+    merchant payment platform; its public REST API v1 processes real-time credit-card
+    and bank-account payments, refunds, pre-authorisations and captures, plus a
+    customer vault, single-use tokens, EMV 3-D Secure authentication, bulk payment
+    files, surcharges and merchant configuration. Uses HTTP Basic auth with a
+    publishable or secret API key over TLS 1.2+ at api.payway.com.au/rest/v1. Fully
+    documented publicly but NO downloadable OpenAPI/Swagger is published (reference
+    docs and Postman-based exploration only), so no machine-readable spec is wired.
+- aid: westpac:westpac-quickstream-rest-api
+  name: Westpac QuickStream REST API
+  tags:
+  - Payments
+  - Card Payments
+  - Payment Gateway
+  - Merchants
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
+  baseURL: https://api.quickstream.westpac.com.au/rest/v1
+  properties:
+  - url: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
+    type: Documentation
+  - url: https://quickstream.westpac.com.au/docs/
+    type: GettingStarted
+  - url: https://quickstream.westpac.com.au/docs/quickstreamapi/change-log/
+    type: ChangeLog
+  description: First-party Westpac payment API (beyond CDR). QuickStream is Westpac's
+    online payment gateway; its public REST API v1 exposes Transactions, Customers,
+    Accounts, Credit Cards, Recurring Payments, PayIDs, Single-Use-Tokens, Payment
+    Files, PayTo Agreements, Businesses and API Keys resources for card and account
+    payment processing. Uses HTTP Basic auth with a secret or publishable API key at
+    api.quickstream.westpac.com.au/rest/v1 (test host api.quickstream.support.qvalent.com).
+    Fully documented publicly but NO downloadable OpenAPI/Swagger is published
+    (reference docs and Postman-based exploration only), so no machine-readable spec
+    is wired.
 common:
 - type: VulnerabilityDisclosure
   url: security/westpac-vulnerability-disclosure.yml
