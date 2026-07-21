@@ -1,0 +1,77 @@
+generated: '2026-07-21'
+method: searched
+source: https://quickstream.westpac.com.au/docs/quickstreamapi/change-log/
+api: westpac:westpac-quickstream-rest-api
+note: >-
+  Dated changelog for Westpac's QuickStream REST API v1 (the first-party payment
+  gateway, distinct from the CDR surface). QuickStream publishes a public,
+  date-organised (year-month) change log rather than a semantic version stream;
+  the API itself is versioned at the URI path level as /rest/v1. Recent window
+  captured verbatim below.
+scheme: date-based
+version_in_path: v1
+current: v1
+entries:
+  - date: '2026-05'
+    highlights: >-
+      PayID API: registrationPriority now defaults based on PayID type;
+      customerNumber support added to register endpoints; receipt numbers plus
+      account details now returned for PayID transactions.
+    breaking: false
+  - date: '2026-02'
+    highlights: >-
+      Introduced registrationPriority parameter on the PayID API register
+      endpoints to support bulk registrations.
+    breaking: false
+  - date: '2026-01'
+    highlights: >-
+      Extended Apple Pay support with a new createAllButtons function in the
+      Payment Request Button module for third-party browser compatibility.
+    breaking: false
+  - date: '2025-11'
+    highlights: >-
+      Expanded PayTo capabilities: added payer account support to the
+      Single-Use Tokens API (once-off PayTo payments and agreement creation via
+      tokens) plus PayTo Trusted Frame for additional customer types.
+    breaking: false
+  - date: '2025-10'
+    highlights: >-
+      Added applePayToken field to the Single-Use-Tokens API to support Apple
+      Pay in an App with the QuickStream REST API.
+    breaking: false
+  - date: '2025-09'
+    highlights: >-
+      Major PayID integration: dedicated API, transaction support, refunds,
+      webhooks and CSV reporting. Added Google Pay in-app support via new token
+      fields.
+    breaking: false
+  - date: '2025-05'
+    highlights: >-
+      Changed entryMode to required in the Transactions API and made usage
+      conditional when using stored credentials (backward compatible).
+    breaking: false
+  - date: '2025-01'
+    highlights: >-
+      Implemented CSV PayTo Agreements report download via the PayTo Agreements
+      API.
+    breaking: false
+  - date: '2024-07'
+    highlights: >-
+      Introduced agreementCreationType field to track how PayTo agreements were
+      established.
+    breaking: false
+  - date: '2024-05'
+    highlights: >-
+      Enabled e-Commerce and once-off PayTo payments by adding payToAgreement
+      support to transaction requests.
+    breaking: false
+  - date: '2024-01'
+    highlights: >-
+      Launched complete PayTo infrastructure: dedicated API, transaction
+      support, webhooks and supplier business code tracking.
+    breaking: false
+  - date: '2023-10'
+    highlights: >-
+      Added merchant routing result column to Transaction CSV Export V2
+      reporting format.
+    breaking: false

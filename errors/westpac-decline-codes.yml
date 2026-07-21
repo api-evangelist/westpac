@@ -1,0 +1,53 @@
+generated: '2026-07-21'
+method: searched
+source: https://quickstream.westpac.com.au/docs/general/response-codes/
+api: westpac:westpac-quickstream-rest-api
+note: >-
+  Credit-card transaction response codes for Westpac's QuickStream / PayWay
+  (Qvalent) payment gateways. These complement errors/westpac-problem-types.yml
+  (which covers CDR API-level errors); this catalog is the payment-authorization
+  decline surface. Codes are returned on the transaction response, not as an
+  HTTP error.
+envelope:
+  fields:
+    response_code: responseCode
+    response_description: responseDescription
+    summary_code: summaryCode
+  summary_codes:
+    '0': Approved
+    '1': Declined
+    '2': Erred (transaction may have been approved and card debited but no response returned — do not retry blindly)
+    '3': Rejected / Voided
+  approved_codes: ['00', '08']
+  buyer_masking: >-
+    Cardholders are shown a generic decline; the specific responseCode/description
+    is returned to the merchant integration, not surfaced verbatim to the buyer.
+decline_codes:
+  - {code: '00', meaning: Approved or completed successfully, summary: '0', action: proceed}
+  - {code: '01', meaning: Refer to card issuer, summary: '1', action: ask cardholder to contact their bank}
+  - {code: '03', meaning: Invalid merchant, summary: '1', action: check merchant configuration}
+  - {code: '04', meaning: Pick-up card, summary: '1', action: do not retry; card flagged}
+  - {code: '05', meaning: Do not honour, summary: '1', action: generic issuer decline; try another card}
+  - {code: '08', meaning: Honour with identification, summary: '0', action: approved}
+  - {code: '12', meaning: Invalid transaction, summary: '1', action: check request fields}
+  - {code: '14', meaning: Invalid card number (no such number), summary: '1', action: correct the card number}
+  - {code: '17', meaning: Customer cancellation, summary: '1', action: cardholder cancelled}
+  - {code: '22', meaning: Suspected malfunction, summary: '1', action: retry later}
+  - {code: '30', meaning: Format error, summary: '1', action: fix message format}
+  - {code: '41', meaning: Lost card, summary: '1', action: do not retry; card reported lost}
+  - {code: '42', meaning: No universal account, summary: '1', action: use a different account/card}
+  - {code: '43', meaning: Stolen card, pick up, summary: '1', action: do not retry; card reported stolen}
+  - {code: '51', meaning: Not sufficient funds, summary: '1', action: ask cardholder to use another card}
+  - {code: '54', meaning: Expired card, summary: '1', action: request an unexpired card}
+  - {code: '57', meaning: Transaction not permitted to cardholder, summary: '1', action: use a different card}
+  - {code: '59', meaning: Suspected fraud, summary: '1', action: do not retry}
+  - {code: '61', meaning: Exceeds withdrawal amount limits, summary: '1', action: reduce amount or use another card}
+  - {code: '62', meaning: Restricted card, summary: '1', action: use a different card}
+  - {code: '65', meaning: Exceeds withdrawal frequency limit, summary: '1', action: retry later or use another card}
+  - {code: '91', meaning: Issuer or switch is inoperative, summary: '1', action: retry later}
+  - {code: '92', meaning: Financial institution cannot be found for routing, summary: '1', action: check card/routing}
+  - {code: 'Q0', meaning: Scheme Tokenisation Error, summary: '3', action: retry tokenisation}
+  - {code: 'Q3', meaning: Payment Gateway Unavailable, summary: '3', action: retry later}
+  - {code: 'QI', meaning: Transaction incomplete, summary: '2', action: query transaction status before retrying}
+  - {code: 'QQ', meaning: Invalid Card, summary: '1', action: correct card details}
+  - {code: 'QY', meaning: Card Type not accepted, summary: '1', action: use an accepted card scheme}

@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: searched
+source: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/trusted-frame/
+note: >-
+  Client-side / embeddable UI components published by Westpac's first-party
+  payment gateways (QuickStream and PayWay). These are hosted-field / iframe
+  tokenisation surfaces distinct from server-side SDKs; their primary purpose is
+  to keep card capture off the merchant server and reduce PCI-DSS scope to SAQ A.
+apis:
+  - westpac:westpac-quickstream-rest-api
+  - westpac:westpac-payway-rest-api
+families:
+  - name: Trusted Frame (QuickStream)
+    kind: hosted-fields-iframe
+    loader: QuickStream-API.js
+    loader_docs: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/trusted-frame/
+    description: >-
+      An iframe-based solution for securely collecting payment card details
+      directly from the customer's browser, returning a single-use token to the
+      merchant so raw card data never touches the merchant server. Also supports
+      a PayTo Trusted Frame variant for collecting bank-account/PayTo details.
+    pci_scope: SAQ A
+  - name: QuickStream-API.js
+    kind: javascript-library
+    loader: QuickStream-API.js
+    loader_docs: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
+    description: >-
+      Browser JavaScript library for securely collecting payment account details
+      from customers and creating payment flows (tokenisation, Trusted Frame
+      mounting, Payment Request Button / Apple Pay + Google Pay wallets).
+  - name: Payment Request Button (QuickStream)
+    kind: wallet-button
+    loader: QuickStream-API.js
+    description: >-
+      Embeddable Apple Pay / Google Pay wallet button; createAllButtons function
+      renders wallet buttons across third-party browsers.
+  - name: Trusted Frame (PayWay)
+    kind: hosted-fields-iframe
+    loader: payway.js
+    loader_docs: https://www.payway.com.au/docs/rest.html
+    description: >-
+      PayWay's hosted iframe for collecting card details client-side and
+      exchanging them for a single-use token via the publishable API key, so the
+      merchant server never stores or processes card data (PCI-DSS SAQ A).
+    pci_scope: SAQ A
+  - name: payway.js
+    kind: javascript-library
+    loader: payway.js
+    description: >-
+      PayWay client-side JavaScript library used with the publishable API key
+      for tokenising card and bank-account details in the browser.

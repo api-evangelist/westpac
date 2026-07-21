@@ -1,0 +1,85 @@
+generated: '2026-07-21'
+method: searched
+source: https://quickstream.westpac.com.au/docs/general/test-account-numbers/
+note: >-
+  Test/sandbox surface for Westpac's first-party payment gateways (QuickStream
+  and PayWay). The CDR Product Reference Data API is public/unauthenticated and
+  has no sandbox; these test values belong to the QuickStream/PayWay merchant
+  payment platforms. All values below are published verbatim by Westpac for
+  testing — none are secrets and none were invented.
+apis:
+  - westpac:westpac-quickstream-rest-api
+  - westpac:westpac-payway-rest-api
+environments:
+  quickstream:
+    test:
+      au: https://api.quickstream.support.qvalent.com/rest/v1
+      nz: https://quickapi-test.paymentsonline.co.nz/rest/v1
+    live:
+      au: https://api.quickstream.westpac.com.au/rest/v1
+      nz: https://quickapi.paymentsonline.co.nz/rest/v1
+    key_model: >-
+      Each facility issues both Secret API Keys (server-side, full access) and
+      Publishable API Keys (client-side, tokenisation only). Test facilities
+      issue test API keys; live facilities issue production API keys. Keys are
+      differentiated by facility/permission rather than by a documented prefix.
+  payway:
+    key_model: >-
+      Publishable API keys (client-side, payway.js tokenisation) and Secret API
+      keys (server-side, full access). Developers obtain a free PayWay test
+      facility before purchasing live access.
+    docs: https://www.payway.com.au/docs/rest.html
+test_cards:
+  scope: QuickStream / PayWay (Qvalent) Australian merchants
+  approved:
+    visa: ['4242424242424242', '4111111111111111', '4444333322221111', '4017950000000009', '4564000000000182', '4041370000456459']
+    mastercard: ['5163200000000008', '5200000009915957', '2224000000031118', '5188680400000008']
+    amex: ['340000000636513', '370000000201048']
+    jcb: ['3530000000000003']   # exp 10/2035, CVN 573
+    unionpay: ['6250947000000014']  # exp 12/2035, CVN 123
+  declined:
+    visa: ['4111111117444490', '4111111116444491', '4111111115444492', '4111111114444493', '4111111113444494', '4111111112444495', '4111111111444496', '4111111110444497', '4041370000011197', '4111111119444498', '4111111118444499']
+    mastercard: ['5100000000404390', '2229000000002791', '5163200000000792', '5500000000101893', '5400000000501994', '2300000000887995', '5100000000432896', '2710000000011897', '5188683000000097', '5200000000022498', '5200000000830999']
+    amex: ['340000000075290', '370000000024291', '340000000067792', '340000000070093', '370000000094294', '370000000093395', '340000000089796', '370000000092397', '370000000064198', '370000000079899']
+    jcb: ['3532000000000092']  # exp 10/2035, CVN 573
+  new_zealand:
+    mastercard: ['5123450000000008', '2223000000000007', '5111111111111118', '2223000000000023']  # CVV 100
+    visa: ['4508750015741019', '4012000033330026']  # CVV 100
+    amex: ['345678901234564', '371449635398431']    # CVV 1000
+test_bank_accounts:
+  note: BSB + account number pairs for direct-entry / bank-account testing.
+  approved:
+    - {bsb: '032-999', account: '999994'}
+    - {bsb: '032-002', account: '123465'}
+  declined:
+    - {bsb: '032-051', account: '111110'}
+    - {bsb: '032-052', account: '111112'}
+    - {bsb: '032-053', account: '111114'}
+    - {bsb: '032-054', account: '111116'}
+    - {bsb: '032-055', account: '111118'}
+    - {bsb: '032-056', account: '222223'}
+    - {bsb: '032-057', account: '111111'}
+    - {bsb: '032-058', account: '111113'}
+    - {bsb: '032-059', account: '111115'}
+  rejected:
+    - {bsb: '032-050', account: '111119'}
+test_payids:
+  - pattern: prefix "test_error"
+    result: registration rejected
+  - pattern: prefix "test_payment" + STATIC type
+    result: approved, receives $1.00 payment
+  - pattern: prefix "test_payment" + SINGLE type
+    result: approved, receives $1.00 payment
+  - pattern: invalidpayid@example.com
+    result: registration rejected
+test_payto_accounts:
+  note: Payer BSB drives the simulated PayTo agreement outcome; any account number.
+  accounts:
+  - {payer_bsb: '032001', result: agreement declined by payer}
+  - {payer_bsb: '032002', result: agreement not approved in time}
+  - {payer_bsb: '032003', result: agreement ineligible}
+  - {payer_bsb: '032004', result: retried automatically then approved}
+  - {payer_bsb: '032005', result: agreement expires}
+  - {payer_bsb: '032006', result: delayed creation (~30 minutes)}
+  - {payer_bsb: '032007', result: cancelled after payment}
+  - {payer_bsb: other, result: approved}

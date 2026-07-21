@@ -249,6 +249,20 @@ common:
   url: skills/westpac-browse-products.md
 - type: LLMsTxt
   url: llms/westpac-llms.txt
+- type: ChangeLog
+  url: changelog/westpac-quickstream-changelog.yml
+- type: Sandbox
+  url: sandbox/westpac-sandbox.yml
+- type: Components
+  url: components/westpac-components.yml
+- type: DeclineCodes
+  url: errors/westpac-decline-codes.yml
+- type: Compliance
+  url: https://quickstream.westpac.com.au/docs/general/pci-compliance/
+- type: GettingStarted
+  url: https://quickstream.westpac.com.au/docs/
+- type: APIReference
+  url: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
