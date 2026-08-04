@@ -1,0 +1,26 @@
+{
+  "provider": "westpac",
+  "sources": [
+    "westpac-banking-account-balances-api-openapi.yml",
+    "westpac-banking-account-direct-debits-api-openapi.yml",
+    "westpac-banking-account-scheduled-payments-api-openapi.yml",
+    "westpac-banking-account-transactions-api-openapi.yml",
+    "westpac-banking-accounts-api-openapi.yml",
+    "westpac-banking-payees-api-openapi.yml",
+    "westpac-banking-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "westpac-banking-account-balances-api-openapi.yml",
+    "westpac-banking-account-direct-debits-api-openapi.yml",
+    "westpac-banking-account-scheduled-payments-api-openapi.yml",
+    "westpac-banking-account-transactions-api-openapi.yml",
+    "westpac-banking-accounts-api-openapi.yml",
+    "westpac-banking-payees-api-openapi.yml",
+    "westpac-banking-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
