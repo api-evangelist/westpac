@@ -214,6 +214,9 @@ apis:
   - type: Documentation
     url: https://www.westpac.com.au/about-westpac/innovation/open-banking/
 common:
+- type: CapabilityMap
+  url: capabilities/westpac-capability-edges.yml
+  name: Westpac Banking Corporation Business Capability Map
 - type: VulnerabilityDisclosure
   url: security/westpac-vulnerability-disclosure.yml
 - type: DomainSecurity
