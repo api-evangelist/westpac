@@ -1,72 +1,141 @@
-generated: '2026-07-20'
-method: derived
-source: openapi/westpac-cds-banking-products-openapi.yml
-summary: >-
-  Cross-cutting request/response semantics for Westpac's CDR Product Reference
-  Data API. This is a read-only, unauthenticated surface conforming to the DSB
-  Consumer Data Standards; conventions below are inherited from the Consumer Data
-  Standards Banking API contract, not Westpac-proprietary.
+generated: '2026-10-20'
+method: searched
+source:
+- https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
+- https://quickstream.westpac.com.au/docs/quickstreamapi/v1/transactions/
+- openapi/_original/westpac-cds-banking-openapi.yml
+summary: 'Cross-cutting request/response semantics for Westpac''s CDR Product Reference Data API. This is a read-only,
+  unauthenticated surface conforming to the DSB Consumer Data Standards; conventions below are inherited from the
+  Consumer Data Standards Banking API contract, not Westpac-proprietary. A second, Westpac-proprietary surface is
+  documented: the QuickStream REST API v1 (https://api.quickstream.westpac.com.au/rest/v1); its conventions are
+  recorded under the quickstream: keys and in idempotency/reversibility below.'
 authentication:
   style: none
-  detail: >-
-    The public Product Reference Data endpoints require no authentication. No API
-    key, bearer token, or OAuth is used for the /banking/products endpoints.
+  detail: The public Product Reference Data endpoints require no authentication. No API key, bearer token, or OAuth
+    is used for the /banking/products endpoints.
   cross_ref: authentication/westpac-authentication.yml
 versioning:
   style: header
   header: x-v
-  detail: >-
-    Clients MUST send the x-v request header declaring the endpoint version
-    requested; an optional x-min-v header declares the minimum acceptable version.
-    The data holder echoes the served version in the x-v response header. Westpac
-    honours x-v versions 4 and 5 for Get Products; requesting an unsupported
-    version (e.g. x-v 3) yields an HTTP 406 UnsupportedVersion error.
+  detail: Clients MUST send the x-v request header declaring the endpoint version requested; an optional x-min-v
+    header declares the minimum acceptable version. The data holder echoes the served version in the x-v response
+    header. Westpac honours x-v versions 4 and 5 for Get Products; requesting an unsupported version (e.g. x-v 3)
+    yields an HTTP 406 UnsupportedVersion error.
   cross_ref: lifecycle/westpac-lifecycle.yml
 pagination:
   style: page-number
   params:
-    - page
-    - page-size
+  - page
+  - page-size
   defaults:
     page-size: 25
   response_fields:
-    links: [self, first, prev, next, last]
-    meta: [totalRecords, totalPages]
-  detail: >-
-    Standard Consumer Data Standards page-number pagination. page selects the
-    1-based page; page-size sets records per page (default 25). Paginated
-    responses carry a LinksPaginated links object and a MetaPaginated meta object
-    with totalRecords and totalPages.
+    links:
+    - self
+    - first
+    - prev
+    - next
+    - last
+    meta:
+    - totalRecords
+    - totalPages
+  detail: Standard Consumer Data Standards page-number pagination. page selects the 1-based page; page-size sets
+    records per page (default 25). Paginated responses carry a LinksPaginated links object and a MetaPaginated meta
+    object with totalRecords and totalPages.
 filtering:
   params:
-    - effective        # CURRENT | FUTURE | ALL
-    - updated-since     # DateTimeString
-    - brand
-    - product-category  # BankingProductCategory enum
-  detail: >-
-    Get Products supports server-side filtering by product effectivity, last
-    update time, brand, and product category.
+  - effective
+  - updated-since
+  - brand
+  - product-category
+  detail: Get Products supports server-side filtering by product effectivity, last update time, brand, and product
+    category.
 idempotency:
-  supported: false
-  detail: >-
-    The API exposes only safe GET operations (listProducts, getProductDetail);
-    there is no state-changing operation and therefore no idempotency-key
-    contract. No Idempotency canonical pointer is emitted.
+  coverage: full
+  header: Idempotency-Key
+  retention: Idempotency keys expire after 22 hours.
+  max_length: The maximum length is 60 ASCII characters.
+  detail: 'CDR surface: read-only GETs, no idempotency contract (na). QuickStream REST API: "You should set a unique
+    value for the Idempotency-Key header on POST requests. Use a UUID for your idempotency key." "If you resend
+    a POST request with the same value for the Idempotency-Key , you will get the original response. If the server
+    is still processing the original POST , you will receive 429 Too Many Requests ." The mechanism applies to every
+    POST (the creating/transacting surface, including take payment, refund and void); PUT is idempotent by HTTP
+    semantics.'
+  surfaces:
+    cdr: na
+    quickstream: full
+  docs: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
+  cross_ref: rate-limits/westpac-rate-limits.yml
 error_envelope:
   style: consumer-data-standards
-  detail: >-
-    Errors follow the Consumer Data Standards error payload (a top-level errors[]
-    array of {code, title, detail, meta}), not RFC 9457 application/problem+json.
-    See errors/westpac-problem-types.yml.
+  detail: Errors follow the Consumer Data Standards error payload (a top-level errors[] array of {code, title, detail,
+    meta}), not RFC 9457 application/problem+json. See errors/westpac-problem-types.yml.
   cross_ref: errors/westpac-problem-types.yml
 rate_limiting:
   signaling: none-documented
-  detail: >-
-    Westpac states the PRD API is "available to everyone with no restrictions on
-    use"; no rate-limit headers or published quota are documented for the public
-    PRD surface.
+  detail: Westpac states the PRD API is "available to everyone with no restrictions on use"; no rate-limit headers
+    or published quota are documented for the public PRD surface.
 data_types:
-  detail: >-
-    Field types carry CDS x-cds-type annotations (DateTimeString, AmountString,
-    RateString, URIString, ASCIIString, CurrencyString, PositiveInteger) that
-    constrain string formats beyond base JSON Schema.
+  detail: Field types carry CDS x-cds-type annotations (DateTimeString, AmountString, RateString, URIString, ASCIIString,
+    CurrencyString, PositiveInteger) that constrain string formats beyond base JSON Schema.
+quickstream:
+  base_url:
+  - https://api.quickstream.westpac.com.au/rest/v1
+  - https://quickapi.paymentsonline.co.nz/rest/v1
+  authentication: HTTP Basic Auth, API key as username, blank password (see authentication/westpac-authentication.yml)
+  versioning: The current version of the API is v1 . ... If we make any backwards incompatible changes we will release
+    a new major version of the API.
+  pagination:
+    style: hateoas-links
+    page_size: The data JSON property holds up to 20 items .
+    links:
+    - next
+    - prev
+    link_fields:
+    - rel
+    - href
+    - requestMethod
+  filtering: query parameters on some GET requests, e.g. GET /rest/v1/transactions?supplierBusinessCode=MYSUPPLIER
+  cors: CORS is not supported.
+  error_envelope:
+    fields:
+    - links
+    - status
+    - requestMethod
+    - requestUrl
+    - customerMessage
+    - developerMessage
+    - errors
+    field_errors: errors[] carries field-level validation errors
+  retry: 'If you receive one of these responses, wait 20 seconds and then resend the request with the same Idempotency-Key
+    : 429 Too Many Requests 503 Service Unavailable A transient network error, such as a time-out or closed socket'
+  docs: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
+reversibility:
+  docs: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/transactions/
+  surfaces:
+  - write: Take payment (POST /transactions)
+    reversal: Void payment
+    endpoint: POST /transactions/{receiptNumber}/void
+    operationId: null
+    window: void a transaction to cancel it prior to settlement.
+    grade: verified
+    detail: To determine if a transaction can be voided, get the transaction details and use the voidable field.
+      Union Pay does not support void transactions.
+  - write: Take payment (POST /transactions)
+    reversal: Refund payment
+    endpoint: POST /transactions (transactionType REFUND, originalReceiptNumber)
+    operationId: null
+    window: null
+    grade: documented
+    detail: To determine if a payment can be refunded, get the transaction details and use the refundable field.
+      You can never refund more than the payment amount. No time window is stated.
+  - write: Pre-authorisation
+    reversal: Cancel a pre-authorisation
+    endpoint: POST /transactions
+    operationId: null
+    window: null
+    grade: documented
+    detail: Use this resource to partially or fully cancel a pre-authorisation . Validity periods are deferred to
+      the Mastercard and Visa pre-authorisation enhancements page.
+  note: operationId is null because no QuickStream OpenAPI is held in openapi/; the CDR Banking surface is read-only
+    (na).

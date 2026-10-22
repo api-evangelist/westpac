@@ -1,7 +1,18 @@
-generated: '2026-07-20'
+name: Westpac agent skills
+generated: '2026-10-20'
 method: generated
+source: openapi/
+note: Westpac publishes no skills or AGENTS.md. These skills are generated from the saved CDR Banking contracts.
 skills:
   - file: westpac-browse-products.md
-    name: Browse Westpac banking products
-    api: openapi/westpac-cds-banking-products-openapi.yml
-    operations: [listProducts, getProductDetail]
+    name: westpac-browse-products
+    api: openapi/westpac-banking-products-api-openapi.yml
+    operations: [listBankingProducts, getBankingProductDetail]
+  - file: westpac-review-account-activity.md
+    name: westpac-review-account-activity
+    api: openapi/westpac-banking-accounts-api-openapi.yml
+    operations: [listBankingAccounts, getBankingAccountDetail, listBankingBalancesBulk, getBankingBalance, listBankingTransactions, getBankingTransactionDetail]
+  - file: westpac-review-payment-commitments.md
+    name: westpac-review-payment-commitments
+    api: openapi/westpac-banking-payees-api-openapi.yml
+    operations: [listBankingPayees, getBankingPayeeDetail, listDirectDebitsBulk, listDirectDebits, listScheduledPaymentsBulk, listScheduledPayments, listInstalmentPlansBulk, listInstalmentPlans]

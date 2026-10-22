@@ -1,0 +1,15 @@
+name: Westpac pricing
+generated: '2026-10-20'
+method: none
+source: https://quickstream.westpac.com.au/docs/general/getting-started
+audience: unclear
+pricing_basis: none
+published: false
+plan_count: 0
+plans: []
+delivery:
+  model: managed
+note: No API pricing page is published. CDR Product Reference Data is free and public by regulation; QuickStream
+  and PayWay are merchant payment facilities sold through Westpac (test facilities free on sign-up), with no published
+  price list on their docs. https://www.payway.com.au/pricing returned 404 on 2026-10-20. Westpac's retail fee and
+  rate tables are consumer product pricing, not API pricing.

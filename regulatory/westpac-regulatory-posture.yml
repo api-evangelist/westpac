@@ -1,0 +1,65 @@
+generated: '2026-10-20'
+method: searched
+probe: true
+source: https://www.westpac.com.au/privacy/privacy-statement/
+pages_read:
+- {url: 'https://www.westpac.com.au/privacy/privacy-statement/', http_status: 200, fetched: '2026-10-20', note: 'pre-flight age_assurance candidate was a false positive (tax withholding on accounts for children under 16), so no age_assurance signal is recorded'}
+- {url: 'https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/aw/WBC_CDR_Policy.pdf', http_status: 200, fetched: '2026-10-20', note: 'Consumer Data Right policy (PDF); quotes are whitespace-normalised from the PDF text layer'}
+- {url: 'https://www.westpac.com.au/security/how-to-report/responsible-disclosure.html', http_status: 200, fetched: '2026-10-20', note: 'pre-flight found no signal candidates; not re-read for regulatory signals'}
+- {url: 'https://quickstream.westpac.com.au/docs/general/pci-compliance/', http_status: 200, fetched: '2026-10-20', note: 'pre-flight found no signal candidates'}
+signals:
+  data_subject_request:
+    url: https://www.westpac.com.au/privacy/privacy-statement/
+    section: '21. Accessing and correcting your personal information'
+    rights_named: [access, correction]
+    evidence:
+    - source: https://www.westpac.com.au/privacy/privacy-statement/
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "You can request access to the personal information (including your sensitive information and credit-related information) that we hold about you. You can also ask for corrections to be made to it. To do so, please contact us using the contact details provided below."
+    note: >-
+      The privacy statement names access and correction rights, made by contacting Westpac. The quoted section names
+      no deletion or portability right. The separate CDR policy covers CDR data correction requests.
+  data_residency:
+    url: https://www.westpac.com.au/privacy/privacy-statement/
+    section: '20. Sharing your personal information overseas'
+    evidence:
+    - source: https://www.westpac.com.au/privacy/privacy-statement/
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "We may share your personal information (including your sensitive information) outside Australia to some of the types of recipients and for the purposes noted above, including:"
+    - source: https://www.westpac.com.au/privacy/privacy-statement/
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "Organisations operating overseas with whom we partner to provide goods and services to you and our contracted service providers operating overseas, which are likely to be located in New Zealand, United States, Canada, India, Japan, the Philippines, UK, Malaysia, Brazil, South Africa and the countries within the European Economic Area;"
+    - source: https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/aw/WBC_CDR_Policy.pdf
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "Westpac Group will not disclose Third-Party CDR Data to accredited third parties who are located overseas or to a third party that is not accredited, other than our outsourced service provider."
+    note: >-
+      This is a disclosure of where data goes, not a residency commitment. General personal information may go to
+      named overseas countries. Third-party CDR data is not disclosed overseas, except to the named outsourced
+      provider, which is Australian-based.
+  subprocessors:
+    url: https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/aw/WBC_CDR_Policy.pdf
+    section: 'Use of outsourced service providers'
+    evidence:
+    - source: https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/aw/WBC_CDR_Policy.pdf
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "We have engaged an outsourced service provider, MOGO Holdings Pty Ltd (‘MOGO’) (an Australian-based nonaccredited entity) to provide us with services that categorise your income transactions, through a Categorisation as a Service (CaaS) solution."
+    note: >-
+      This names one subprocessor, and only for CDR data. The general privacy statement describes 'Business Partners'
+      (service providers, agents and others) as a category but publishes no list of them.
+  data_retention:
+    url: https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/aw/WBC_CDR_Policy.pdf
+    section: 'What Happens When We No Longer Need Your Third-Party CDR Data'
+    stated_period: 'deletion within 24 hours of consent withdrawal or expiry; backups up to 12 months (third-party CDR data only)'
+    evidence:
+    - source: https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/aw/WBC_CDR_Policy.pdf
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "Your data will be deleted from our systems within 24 hours of your withdrawal of consent or expiration of your consent, unless we’re legally required to keep it. A back-up of our database which contains your data will be retained for a maximum of 12 months, at which point it will be permanently deleted."
+    note: >-
+      This retention period covers only third-party CDR data that Westpac receives as an Accredited Data Recipient.
+      No retention period for general personal information was found in the privacy statement.

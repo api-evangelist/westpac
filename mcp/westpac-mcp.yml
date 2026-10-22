@@ -1,27 +1,172 @@
-generated: '2026-07-20'
+generated: '2026-10-20'
 method: derived
 status: candidate
-source: openapi/westpac-cds-banking-products-openapi.yml
-note: No official hosted or remote MCP server is published by Westpac. This is a DERIVED candidate tool
-  list mapping the two public CDR Product Reference Data operations to MCP tools. The endpoints are unauthenticated,
-  which makes them a clean candidate for a read-only MCP surface.
+source: openapi/ (7 CDR Banking API contracts)
+name: Westpac CDR Banking MCP (candidate)
+note: 'Westpac publishes no MCP server: the pre-flight MCP docs probe (2026-10-20) found no MCP documentation on any Westpac
+  host, and Westpac''s llms.txt names no agent surface. This is a DERIVED candidate tool list, one tool per OpenAPI operation.
+  Only the two Product Reference Data tools are publicly callable; the other 17 are CDR consumer-data endpoints reachable
+  only by Accredited Data Recipients with customer consent.'
 server:
-  name: westpac-cdr-products
-  transport: http
+  name: westpac-cdr-banking
+  transport: null
   url: null
 tools:
+- name: list_balances_bulk
+  description: 'Get Bulk Balances (CDR consumer data: requires an Accredited Data Recipient consent token over mTLS; not callable
+    by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-balances-api-openapi.yml#listBankingBalancesBulk
+  method: GET
+  path: /banking/accounts/balances
+  access: gated-read
+  readOnlyHint: true
+- name: list_balances_specific_accounts
+  description: 'Get Balances For Specific Accounts (CDR consumer data: requires an Accredited Data Recipient consent token
+    over mTLS; not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-balances-api-openapi.yml#listBankingBalancesSpecificAccounts
+  method: POST
+  path: /banking/accounts/balances
+  access: gated-read
+  readOnlyHint: true
+- name: get_balance
+  description: 'Get Account Balance (CDR consumer data: requires an Accredited Data Recipient consent token over mTLS; not
+    callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-balances-api-openapi.yml#getBankingBalance
+  method: GET
+  path: /banking/accounts/{accountId}/balance
+  access: gated-read
+  readOnlyHint: true
+- name: list_direct_debits
+  description: 'Get Direct Debits For Account (CDR consumer data: requires an Accredited Data Recipient consent token over
+    mTLS; not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-direct-debits-api-openapi.yml#listDirectDebits
+  method: GET
+  path: /banking/accounts/{accountId}/direct-debits
+  access: gated-read
+  readOnlyHint: true
+- name: list_direct_debits_bulk
+  description: 'Get Bulk Direct Debits (CDR consumer data: requires an Accredited Data Recipient consent token over mTLS;
+    not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-direct-debits-api-openapi.yml#listDirectDebitsBulk
+  method: GET
+  path: /banking/accounts/direct-debits
+  access: gated-read
+  readOnlyHint: true
+- name: list_direct_debits_specific_accounts
+  description: 'Get Direct Debits For Specific Accounts (CDR consumer data: requires an Accredited Data Recipient consent
+    token over mTLS; not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-direct-debits-api-openapi.yml#listDirectDebitsSpecificAccounts
+  method: POST
+  path: /banking/accounts/direct-debits
+  access: gated-read
+  readOnlyHint: true
+- name: list_scheduled_payments
+  description: 'Get Scheduled Payments for Account (CDR consumer data: requires an Accredited Data Recipient consent token
+    over mTLS; not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-scheduled-payments-api-openapi.yml#listScheduledPayments
+  method: GET
+  path: /banking/accounts/{accountId}/payments/scheduled
+  access: gated-read
+  readOnlyHint: true
+- name: list_scheduled_payments_bulk
+  description: 'Get Scheduled Payments Bulk (CDR consumer data: requires an Accredited Data Recipient consent token over mTLS;
+    not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-scheduled-payments-api-openapi.yml#listScheduledPaymentsBulk
+  method: GET
+  path: /banking/payments/scheduled
+  access: gated-read
+  readOnlyHint: true
+- name: list_scheduled_payments_specific_accounts
+  description: 'Get Scheduled Payments For Specific Accounts (CDR consumer data: requires an Accredited Data Recipient consent
+    token over mTLS; not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-scheduled-payments-api-openapi.yml#listScheduledPaymentsSpecificAccounts
+  method: POST
+  path: /banking/payments/scheduled
+  access: gated-read
+  readOnlyHint: true
+- name: list_instalment_plans
+  description: 'Get Instalment Plans for Account (CDR consumer data: requires an Accredited Data Recipient consent token over
+    mTLS; not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-scheduled-payments-api-openapi.yml#listInstalmentPlans
+  method: GET
+  path: /banking/accounts/{accountId}/payments/plans
+  access: gated-read
+  readOnlyHint: true
+- name: list_instalment_plans_bulk
+  description: 'Get Instalment Plans Bulk (CDR consumer data: requires an Accredited Data Recipient consent token over mTLS;
+    not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-scheduled-payments-api-openapi.yml#listInstalmentPlansBulk
+  method: GET
+  path: /banking/accounts/payments/plans
+  access: gated-read
+  readOnlyHint: true
+- name: list_transactions
+  description: 'Get Transactions For Account (CDR consumer data: requires an Accredited Data Recipient consent token over
+    mTLS; not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-transactions-api-openapi.yml#listBankingTransactions
+  method: GET
+  path: /banking/accounts/{accountId}/transactions
+  access: gated-read
+  readOnlyHint: true
+- name: get_transaction_detail
+  description: 'Get Transaction Detail (CDR consumer data: requires an Accredited Data Recipient consent token over mTLS;
+    not callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-account-transactions-api-openapi.yml#getBankingTransactionDetail
+  method: GET
+  path: /banking/accounts/{accountId}/transactions/{transactionId}
+  access: gated-read
+  readOnlyHint: true
+- name: list_accounts
+  description: 'Get Accounts (CDR consumer data: requires an Accredited Data Recipient consent token over mTLS; not callable
+    by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-accounts-api-openapi.yml#listBankingAccounts
+  method: GET
+  path: /banking/accounts
+  access: gated-read
+  readOnlyHint: true
+- name: get_account_detail
+  description: 'Get Account Detail (CDR consumer data: requires an Accredited Data Recipient consent token over mTLS; not
+    callable by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-accounts-api-openapi.yml#getBankingAccountDetail
+  method: GET
+  path: /banking/accounts/{accountId}
+  access: gated-read
+  readOnlyHint: true
+- name: list_payees
+  description: 'Get Payees (CDR consumer data: requires an Accredited Data Recipient consent token over mTLS; not callable
+    by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-payees-api-openapi.yml#listBankingPayees
+  method: GET
+  path: /banking/payees
+  access: gated-read
+  readOnlyHint: true
+- name: get_payee_detail
+  description: 'Get Payee Detail (CDR consumer data: requires an Accredited Data Recipient consent token over mTLS; not callable
+    by an arbitrary agent)'
+  source_operation: openapi/westpac-banking-payees-api-openapi.yml#getBankingPayeeDetail
+  method: GET
+  path: /banking/payees/{payeeId}
+  access: gated-read
+  readOnlyHint: true
 - name: list_products
-  description: List banking products Westpac currently offers to the market. Supports filtering by effectivity,
-    updated-since, brand, and product-category, with page-number pagination. Requires the x-v header (use
-    5).
-  source_operation: openapi/westpac-cds-banking-products-openapi.yml#listProducts
+  description: Get Products
+  source_operation: openapi/westpac-banking-products-api-openapi.yml#listBankingProducts
+  method: GET
+  path: /banking/products
+  access: public-read
+  readOnlyHint: true
 - name: get_product_detail
-  description: Get full detail for a single product by productId, including fees, deposit and lending
-    rates, features, constraints, eligibility, and bundles. Requires the x-v header (use 5).
-  source_operation: openapi/westpac-cds-banking-products-openapi.yml#getProductDetail
+  description: Get Product Detail
+  source_operation: openapi/westpac-banking-products-api-openapi.yml#getBankingProductDetail
+  method: GET
+  path: /banking/products/{productId}
+  access: public-read
+  readOnlyHint: true
 deployment:
   mode: none
+  auth: unknown
   verified: derived
-  tools: 2
-  checked: '2026-08-12'
-  source: catalog MCP census
+  tools: 19
+  public_tools: 2
+  checked: '2026-10-20'
+  source: ../0-working/preflight/westpac.json mcp_tool_table l3=no-mcp-docs-found

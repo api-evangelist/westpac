@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for CDR Banking Banking Payees API
+  version: 1.0.0
+extends: openapi/westpac-banking-payees-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: westpac
+    x-apievangelist-standard: cdr-consumer-data-standards
+    x-apievangelist-auth: cdr-adr-consent-fapi-mtls
+- target: $.servers
+  update:
+  - url: https://digital-api.westpac.com.au/cds-au/v1
+    description: Westpac CDR data holder base URL (from the saved contract servers[])
+- target: $.paths['/banking/payees'].get
+  update:
+    x-apievangelist-tool: list_payees
+    x-apievangelist-agent-access: gated-read
+- target: $.paths['/banking/payees/{payeeId}'].get
+  update:
+    x-apievangelist-tool: get_payee_detail
+    x-apievangelist-agent-access: gated-read

@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for CDR Banking Banking Account Balances API
+  version: 1.0.0
+extends: openapi/westpac-banking-account-balances-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: westpac
+    x-apievangelist-standard: cdr-consumer-data-standards
+    x-apievangelist-auth: cdr-adr-consent-fapi-mtls
+- target: $.servers
+  update:
+  - url: https://digital-api.westpac.com.au/cds-au/v1
+    description: Westpac CDR data holder base URL (from the saved contract servers[])
+- target: $.paths['/banking/accounts/balances'].get
+  update:
+    x-apievangelist-tool: list_balances_bulk
+    x-apievangelist-agent-access: gated-read
+- target: $.paths['/banking/accounts/balances'].post
+  update:
+    x-apievangelist-tool: list_balances_specific_accounts
+    x-apievangelist-agent-access: gated-read
+- target: $.paths['/banking/accounts/{accountId}/balance'].get
+  update:
+    x-apievangelist-tool: get_balance
+    x-apievangelist-agent-access: gated-read

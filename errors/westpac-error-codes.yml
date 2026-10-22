@@ -1,0 +1,98 @@
+generated: '2026-10-20'
+method: searched
+source: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
+api: QuickStream REST API v1
+format: custom-json
+envelope:
+  fields:
+  - links
+  - status
+  - requestMethod
+  - requestUrl
+  - customerMessage
+  - developerMessage
+  - errors
+  field_errors: errors[] of field-level validation messages
+problems:
+- status: 400
+  title: Bad Request
+  type: null
+  description: The request could not be understood by the server due to malformed syntax. This response code is
+    returned if the Idempotency-Key header is too long. This response code is returned if you send query parameters
+    on a PUT , POST or PATCH request.
+  remediation: null
+- status: 401
+  title: Unauthorized
+  type: null
+  description: The server can not authenticate the details in the Authorization header or your facility is set to
+    reject requests from IP addresses it does not recognise .
+  remediation: Check the API key is valid, unexpired and sent as the Basic Auth username; check IP address restrictions.
+- status: 403
+  title: Forbidden
+  type: null
+  description: A valid API key was provided, but it does not have access to the requested resource.
+  remediation: Check if you have provided your publishable API key when you should have provided your secret API
+    key.
+- status: 404
+  title: Not Found
+  type: null
+  description: The server has not found anything matching the Request-URI.
+  remediation: Check if your Secret API key has Business restrictions.
+- status: 405
+  title: Method Not Allowed
+  type: null
+  description: A request was made of a resource using a request method not supported by that resource.
+  remediation: null
+- status: 407
+  title: Proxy Authentication Required
+  type: null
+  description: This error is returned by your proxy server, not QuickStream.
+  remediation: null
+- status: 409
+  title: Conflict
+  type: null
+  description: The server can not process the request as it has conflicted with another request.
+  remediation: See Idempotent Requests.
+- status: 415
+  title: Unsupported Media Type
+  type: null
+  description: The server can not process the content type which was provided.
+  remediation: Send Content-Type application/json.
+- status: 422
+  title: Unprocessable Entity
+  type: null
+  description: The server can not process the content of the request.
+  remediation: You may display the error messages to users. Do not rely on a specific wording.
+- status: 429
+  title: Too Many Requests
+  type: null
+  description: If you send more than 10 simultaneous requests, you may receive this response code.
+  remediation: wait 20 seconds and then resend the request with the same Idempotency-Key
+- status: 500
+  title: Internal Server Error
+  type: null
+  description: The server encountered an unexpected condition which prevented it from fulfilling the request.
+  remediation: You should not resend the request. Contact QuickStream Technical Support.
+- status: 501
+  title: Not Implemented
+  type: null
+  description: The server does not recognize the request method.
+  remediation: null
+- status: 502
+  title: Bad Gateway
+  type: null
+  description: An upstream system returned an invalid response.
+  remediation: Query the resource to determine the current status.
+- status: 503
+  title: Service Unavailable
+  type: null
+  description: The server is currently unable to handle the request due to a temporary overloading or maintenance
+    of the server.
+  remediation: wait 20 seconds and then resend the request with the same Idempotency-Key
+- status: 504
+  title: Gateway Timed Out
+  type: null
+  description: An upstream system timed out.
+  remediation: Try again in 1 minutes, or query the resource to determine the current status.
+note: HTTP status-code reference from the QuickStream REST API docs. Transaction decline/response codes are in errors/westpac-decline-codes.yml;
+  CDR errors in errors/westpac-problem-types.yml.

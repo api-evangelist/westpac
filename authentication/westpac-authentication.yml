@@ -1,27 +1,46 @@
-generated: '2026-07-20'
-method: derived
-source: openapi/westpac-cds-banking-products-openapi.yml
+generated: '2026-10-20'
+method: searched
+source: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
 docs: https://www.westpac.com.au/about-westpac/innovation/open-banking/product-api/
 summary:
-  types: []
+  types:
+  - http-basic
   api_key_in: []
   oauth2_flows: []
-  note: >-
-    The Westpac CDR Product Reference Data OpenAPI declares NO securitySchemes and
-    applies NO security requirement to either operation. Westpac's own
-    documentation confirms "no security or other headers are required to call this
-    API" beyond the mandatory x-v version header. The public PRD surface is
-    unauthenticated by design under the Consumer Data Standards.
-schemes: []
+  note: CDR Product Reference Data (listBankingProducts, getBankingProductDetail) is unauthenticated;
+    the CDR contract declares no securitySchemes. Consumer-data CDR endpoints are reached only through
+    the CDR ADR consent flow (see scopes/westpac-scopes.yml). Westpac's own QuickStream REST API uses
+    HTTP Basic Auth with a Secret or Publishable API key as the username.
+schemes:
+- id: quickstream-basic
+  api: QuickStream REST API v1
+  type: http
+  scheme: basic
+  detail: Authentication to the API is via HTTP Basic Auth. You must send an API key as the Basic Authentication
+    username. Leave the password blank.
+  credentials:
+  - name: Secret API Key
+    detail: allows you to process payments and provides full access to the API.
+  - name: Publishable API Key
+    detail: can be used in mobile applications and web pages and has limited access.
+  key_lifetime: Secret API keys expire after 2 years and then you must use a new key.
+  rotation: GET /api-keys/latest returns the secret key to use from now on; the docs say "You should do
+    this once per day."
+  errors:
+    '401': Sending an invalid API key returns a 401 Unauthorized HTTP status code.
+    '403': Sending a valid API key, but the wrong type of key for the resource returns a 403 Forbidden
+      HTTP status code.
+  docs:
+  - https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
+  - https://quickstream.westpac.com.au/docs/quickstreamapi/v1/api-keys
 public_access:
   authenticated: false
-  detail: >-
-    listProducts and getProductDetail are open, unauthenticated GET endpoints.
+  detail: listProducts and getProductDetail are open, unauthenticated GET endpoints.
 consumer_data_sharing:
-  detail: >-
-    Access to consumer/account data beyond product reference data is NOT available
-    through this public API. It flows through the CDR's Accredited Data Recipient
-    (ADR) model, which uses an OAuth 2.0 / OpenID Connect, FAPI-hardened consent
-    flow operated through the CDR ecosystem (accreditation + the CDR Register),
-    not a Westpac-issued developer credential. That surface is out of scope for
-    this public PRD contract.
+  detail: Access to consumer/account data beyond product reference data is NOT available through this
+    public API. It flows through the CDR's Accredited Data Recipient (ADR) model, which uses an OAuth
+    2.0 / OpenID Connect, FAPI-hardened consent flow operated through the CDR ecosystem (accreditation
+    + the CDR Register), not a Westpac-issued developer credential. That surface is out of scope for this
+    public PRD contract.
+derived_from: openapi/_original/westpac-cds-banking-openapi.yml
+docs_quickstream: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/

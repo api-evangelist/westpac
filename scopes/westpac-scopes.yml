@@ -1,0 +1,23 @@
+generated: '2026-10-20'
+method: derived
+source: openapi/_original/westpac-cds-banking-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/
+note: >-
+  Derived from the per-operation x-scopes extensions in the DSB CDR Banking API
+  (v1.36.0) contract held for Westpac. The contract declares no
+  securitySchemes, so derive-oauth-scopes.py found nothing; these scopes are
+  the CDR consent scopes an Accredited Data Recipient obtains through the CDR
+  OAuth 2.0 / FAPI consent flow. They are defined by the Data Standards Body,
+  not by Westpac. listBankingProducts and getBankingProductDetail carry no
+  scope and are public.
+scopes:
+  - name: bank:accounts.basic:read
+    operations: [listBankingAccounts, listBankingBalancesBulk, listBankingBalancesSpecificAccounts, getBankingBalance]
+  - name: bank:accounts.detail:read
+    operations: [getBankingAccountDetail]
+  - name: bank:transactions:read
+    operations: [listBankingTransactions, getBankingTransactionDetail]
+  - name: bank:regular_payments:read
+    operations: [listDirectDebits, listDirectDebitsBulk, listDirectDebitsSpecificAccounts, listScheduledPayments, listScheduledPaymentsBulk, listScheduledPaymentsSpecificAccounts, listInstalmentPlans, listInstalmentPlansBulk]
+  - name: bank:payees:read
+    operations: [listBankingPayees, getBankingPayeeDetail]

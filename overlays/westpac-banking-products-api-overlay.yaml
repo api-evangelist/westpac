@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for CDR Banking Banking Products API
+  version: 1.0.0
+extends: openapi/westpac-banking-products-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: westpac
+    x-apievangelist-standard: cdr-consumer-data-standards
+    x-apievangelist-auth: none-public
+- target: $.servers
+  update:
+  - url: https://digital-api.westpac.com.au/cds-au/v1
+    description: Westpac CDR data holder base URL (from the saved contract servers[])
+- target: $.paths['/banking/products'].get
+  update:
+    x-apievangelist-tool: list_products
+    x-apievangelist-agent-access: public-read
+- target: $.paths['/banking/products/{productId}'].get
+  update:
+    x-apievangelist-tool: get_product_detail
+    x-apievangelist-agent-access: public-read

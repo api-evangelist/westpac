@@ -1,0 +1,82 @@
+generated: '2026-10-20'
+method: probed
+source: pre-flight dossier (docs platform, portal detections) + CNAME chains and response headers of the hosts apis.yml names
+registry: all/0-working/vendors.yml
+areas_vocabulary:
+- documentation
+- developer-portal
+- api-gateway
+- cdn
+- hosting
+- sdk-generation
+- api-collections
+- status-page
+- support
+- community
+- identity
+- mcp-hosting
+vendors:
+- vendor: aws-api-gateway
+  name: Amazon API Gateway
+  area: api-gateway
+  host: digital-api.westpac.com.au
+  evidence: header:x-amz-apigw-id
+  signal: header
+  confidence: high
+  kin_score: []
+- vendor: akamai
+  name: Akamai
+  area: cdn
+  host: quickstream.westpac.com.au
+  evidence: cname:akamaiedge.net
+  signal: cname
+  confidence: high
+  kin_score: []
+- vendor: cloudfront
+  name: Amazon CloudFront
+  area: cdn
+  host: www.westpac.com.au
+  evidence: cname:cloudfront.net
+  signal: cname
+  confidence: high
+  kin_score: []
+- vendor: fastly
+  name: Fastly
+  area: cdn
+  host: www.westpac.com.au
+  evidence: header:x-served-by:cache-
+  signal: header
+  confidence: high
+  kin_score: []
+- vendor: statuspage
+  name: Atlassian Statuspage
+  area: status-page
+  host: qvalent.statuspage.io
+  evidence: https://qvalent.statuspage.io/
+  signal: url:statuspage.io
+  confidence: high
+  kin_score:
+  - status_page
+reliance:
+  areas_vendor_served:
+  - api-gateway
+  - cdn
+  - status-page
+  vendor_count: 5
+  areas_observed: 12
+  share_of_observable_areas: 0.25
+  note: areas where a third party was DETECTED serving this provider; an area absent here was either self-run or not observed, and this script
+    cannot tell those apart
+checked:
+- 'docs-platform: custom'
+- qvalent.statuspage.io (StatusPage)
+- www.westpac.com.au (Website)
+- www.westpac.com.au (DeveloperPortal)
+- www.westpac.com.au (Documentation)
+- www.westpac.com.au (HelpCenter)
+- www.westpac.com.au (Support)
+- quickstream.westpac.com.au (GettingStarted)
+- quickstream.westpac.com.au (APIReference)
+- api.payway.com.au (baseURL)
+- api.quickstream.westpac.com.au (baseURL)
+- digital-api.westpac.com.au (baseURL)

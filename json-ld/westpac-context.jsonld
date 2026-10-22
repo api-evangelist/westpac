@@ -1,0 +1,1224 @@
+{
+  "@context": {
+    "@vocab": "https://westpac.com.au/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "westpac": "https://westpac.com.au/schema#",
+    "ResponseBankingAccountsBalanceList_data": "westpac:ResponseBankingAccountsBalanceList_data",
+    "balances": {
+      "@id": "westpac:balances",
+      "@container": "@list"
+    },
+    "ResponseErrorListV2": "westpac:ResponseErrorListV2",
+    "errors": {
+      "@id": "westpac:errors",
+      "@container": "@list"
+    },
+    "ErrorV2_meta": "westpac:ErrorV2_meta",
+    "urn": {
+      "@id": "westpac:urn",
+      "@type": "xsd:string"
+    },
+    "RequestAccountIdListV1_data": "westpac:RequestAccountIdListV1_data",
+    "accountIds": {
+      "@id": "westpac:accountIds",
+      "@container": "@list"
+    },
+    "LinksPaginated": "westpac:LinksPaginated",
+    "self": {
+      "@id": "westpac:self",
+      "@type": "xsd:string"
+    },
+    "first": {
+      "@id": "westpac:first",
+      "@type": "xsd:string"
+    },
+    "prev": {
+      "@id": "westpac:prev",
+      "@type": "xsd:string"
+    },
+    "next": {
+      "@id": "westpac:next",
+      "@type": "xsd:string"
+    },
+    "last": {
+      "@id": "westpac:last",
+      "@type": "xsd:string"
+    },
+    "BankingBalancePurse": "westpac:BankingBalancePurse",
+    "amount": {
+      "@id": "westpac:amount",
+      "@type": "xsd:string"
+    },
+    "currency": {
+      "@id": "westpac:currency",
+      "@type": "xsd:string"
+    },
+    "ErrorV2": "westpac:ErrorV2",
+    "code": {
+      "@id": "westpac:code",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "westpac:title",
+      "@type": "xsd:string"
+    },
+    "detail": {
+      "@id": "westpac:detail",
+      "@type": "xsd:string"
+    },
+    "meta": {
+      "@id": "westpac:meta",
+      "@type": "@id"
+    },
+    "ResponseBankingAccountsBalanceById": "westpac:ResponseBankingAccountsBalanceById",
+    "data": {
+      "@id": "westpac:data",
+      "@type": "@id"
+    },
+    "links": {
+      "@id": "westpac:links",
+      "@type": "@id"
+    },
+    "MetaPaginated": "westpac:MetaPaginated",
+    "totalRecords": {
+      "@id": "westpac:totalRecords",
+      "@type": "xsd:integer"
+    },
+    "totalPages": {
+      "@id": "westpac:totalPages",
+      "@type": "xsd:integer"
+    },
+    "Links": "westpac:Links",
+    "ResponseBankingAccountsBalanceList": "westpac:ResponseBankingAccountsBalanceList",
+    "RequestAccountIdListV1": "westpac:RequestAccountIdListV1",
+    "BankingBalance": "westpac:BankingBalance",
+    "accountId": {
+      "@id": "westpac:accountId"
+    },
+    "currentBalance": {
+      "@id": "westpac:currentBalance",
+      "@type": "xsd:string"
+    },
+    "availableBalance": {
+      "@id": "westpac:availableBalance",
+      "@type": "xsd:string"
+    },
+    "creditLimit": {
+      "@id": "westpac:creditLimit",
+      "@type": "xsd:string"
+    },
+    "amortisedLimit": {
+      "@id": "westpac:amortisedLimit",
+      "@type": "xsd:string"
+    },
+    "purses": {
+      "@id": "westpac:purses",
+      "@container": "@list"
+    },
+    "BankingProductCategoryV2": "westpac:BankingProductCategoryV2",
+    "BankingDirectDebit": "westpac:BankingDirectDebit",
+    "authorisedEntity": {
+      "@id": "westpac:authorisedEntity",
+      "@type": "@id"
+    },
+    "lastDebitDateTime": {
+      "@id": "westpac:lastDebitDateTime",
+      "@type": "xsd:string"
+    },
+    "lastDebitAmount": {
+      "@id": "westpac:lastDebitAmount",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingDirectDebitAuthorisationList": "westpac:ResponseBankingDirectDebitAuthorisationList",
+    "BankingAuthorisedEntity": "westpac:BankingAuthorisedEntity",
+    "description": {
+      "@id": "westpac:description",
+      "@type": "xsd:string"
+    },
+    "financialInstitution": {
+      "@id": "westpac:financialInstitution",
+      "@type": "xsd:string"
+    },
+    "abn": {
+      "@id": "westpac:abn",
+      "@type": "xsd:string"
+    },
+    "acn": {
+      "@id": "westpac:acn",
+      "@type": "xsd:string"
+    },
+    "arbn": {
+      "@id": "westpac:arbn",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingDirectDebitAuthorisationList_data": "westpac:ResponseBankingDirectDebitAuthorisationList_data",
+    "directDebitAuthorisations": {
+      "@id": "westpac:directDebitAuthorisations",
+      "@container": "@list"
+    },
+    "BankingScheduledPaymentV2": "westpac:BankingScheduledPaymentV2",
+    "scheduledPaymentId": {
+      "@id": "westpac:scheduledPaymentId"
+    },
+    "nickname": {
+      "@id": "westpac:nickname",
+      "@type": "xsd:string"
+    },
+    "payerReference": {
+      "@id": "westpac:payerReference",
+      "@type": "xsd:string"
+    },
+    "payeeReference": {
+      "@id": "westpac:payeeReference",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "westpac:status",
+      "@type": "xsd:string"
+    },
+    "from": {
+      "@id": "westpac:from",
+      "@type": "@id"
+    },
+    "paymentSet": {
+      "@id": "westpac:paymentSet",
+      "@container": "@list"
+    },
+    "recurrence": {
+      "@id": "westpac:recurrence",
+      "@type": "@id"
+    },
+    "BankingScheduledPaymentSetV2": "westpac:BankingScheduledPaymentSetV2",
+    "to": {
+      "@id": "westpac:to",
+      "@type": "@id"
+    },
+    "isAmountCalculated": {
+      "@id": "westpac:isAmountCalculated",
+      "@type": "xsd:boolean"
+    },
+    "BankingDomesticPayeeAccount": "westpac:BankingDomesticPayeeAccount",
+    "accountName": {
+      "@id": "westpac:accountName",
+      "@type": "xsd:string"
+    },
+    "bsb": {
+      "@id": "westpac:bsb",
+      "@type": "xsd:string"
+    },
+    "accountNumber": {
+      "@id": "westpac:accountNumber",
+      "@type": "xsd:string"
+    },
+    "BankingScheduledPaymentRecurrenceLastWeekday": "westpac:BankingScheduledPaymentRecurrenceLastWeekday",
+    "finalPaymentDate": {
+      "@id": "westpac:finalPaymentDate",
+      "@type": "xsd:string"
+    },
+    "paymentsRemaining": {
+      "@id": "westpac:paymentsRemaining",
+      "@type": "xsd:integer"
+    },
+    "interval": {
+      "@id": "westpac:interval",
+      "@type": "xsd:string"
+    },
+    "lastWeekDay": {
+      "@id": "westpac:lastWeekDay",
+      "@type": "xsd:string"
+    },
+    "nonBusinessDayTreatment": {
+      "@id": "westpac:nonBusinessDayTreatment",
+      "@type": "xsd:string"
+    },
+    "BankingInstalmentPlanSchedule": "westpac:BankingInstalmentPlanSchedule",
+    "amountDue": {
+      "@id": "westpac:amountDue",
+      "@type": "xsd:string"
+    },
+    "dueDate": {
+      "@id": "westpac:dueDate",
+      "@type": "xsd:string"
+    },
+    "isPaid": {
+      "@id": "westpac:isPaid",
+      "@type": "xsd:boolean"
+    },
+    "BankingDomesticPayee": "westpac:BankingDomesticPayee",
+    "payeeAccountUType": {
+      "@id": "westpac:payeeAccountUType",
+      "@type": "xsd:string"
+    },
+    "account": {
+      "@id": "westpac:account",
+      "@type": "@id"
+    },
+    "card": {
+      "@id": "westpac:card",
+      "@type": "@id"
+    },
+    "payId": {
+      "@id": "westpac:payId",
+      "@type": "@id"
+    },
+    "ResponseBankingScheduledPaymentsListV2": "westpac:ResponseBankingScheduledPaymentsListV2",
+    "ResponseBankingInstalmentPlanList_data": "westpac:ResponseBankingInstalmentPlanList_data",
+    "plans": {
+      "@id": "westpac:plans",
+      "@container": "@list"
+    },
+    "BankingDomesticPayeePayId": "westpac:BankingDomesticPayeePayId",
+    "name": {
+      "@id": "westpac:name",
+      "@type": "xsd:string"
+    },
+    "identifier": {
+      "@id": "westpac:identifier",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "westpac:type",
+      "@type": "xsd:string"
+    },
+    "BankingBillerPayee": "westpac:BankingBillerPayee",
+    "billerCode": {
+      "@id": "westpac:billerCode",
+      "@type": "xsd:string"
+    },
+    "crn": {
+      "@id": "westpac:crn",
+      "@type": "xsd:string"
+    },
+    "billerName": {
+      "@id": "westpac:billerName",
+      "@type": "xsd:string"
+    },
+    "BankingInternationalPayee_bankDetails": "westpac:BankingInternationalPayee_bankDetails",
+    "country": {
+      "@id": "westpac:country",
+      "@type": "xsd:string"
+    },
+    "bankAddress": {
+      "@id": "westpac:bankAddress",
+      "@type": "@id"
+    },
+    "beneficiaryBankBIC": {
+      "@id": "westpac:beneficiaryBankBIC",
+      "@type": "xsd:string"
+    },
+    "fedWireNumber": {
+      "@id": "westpac:fedWireNumber",
+      "@type": "xsd:string"
+    },
+    "sortCode": {
+      "@id": "westpac:sortCode",
+      "@type": "xsd:string"
+    },
+    "chipNumber": {
+      "@id": "westpac:chipNumber",
+      "@type": "xsd:string"
+    },
+    "routingNumber": {
+      "@id": "westpac:routingNumber",
+      "@type": "xsd:string"
+    },
+    "legalEntityIdentifier": {
+      "@id": "westpac:legalEntityIdentifier",
+      "@type": "xsd:string"
+    },
+    "BankingInstalmentPlan": "westpac:BankingInstalmentPlan",
+    "planId": {
+      "@id": "westpac:planId"
+    },
+    "planReference": {
+      "@id": "westpac:planReference",
+      "@type": "xsd:string"
+    },
+    "merchantName": {
+      "@id": "westpac:merchantName",
+      "@type": "xsd:string"
+    },
+    "merchantCategoryCode": {
+      "@id": "westpac:merchantCategoryCode",
+      "@type": "xsd:string"
+    },
+    "planNickname": {
+      "@id": "westpac:planNickname",
+      "@type": "xsd:string"
+    },
+    "creationDate": {
+      "@id": "westpac:creationDate",
+      "@type": "xsd:string"
+    },
+    "planCurrency": {
+      "@id": "westpac:planCurrency",
+      "@type": "xsd:string"
+    },
+    "planCharge": {
+      "@id": "westpac:planCharge",
+      "@type": "xsd:string"
+    },
+    "planRate": {
+      "@id": "westpac:planRate",
+      "@type": "xsd:string"
+    },
+    "duration": {
+      "@id": "westpac:duration",
+      "@type": "xsd:string"
+    },
+    "instalmentInterval": {
+      "@id": "westpac:instalmentInterval",
+      "@type": "xsd:string"
+    },
+    "schedule": {
+      "@id": "westpac:schedule",
+      "@container": "@list"
+    },
+    "BankingScheduledPaymentRecurrenceOnceOff": "westpac:BankingScheduledPaymentRecurrenceOnceOff",
+    "paymentDate": {
+      "@id": "westpac:paymentDate",
+      "@type": "xsd:string"
+    },
+    "BankingScheduledPaymentFrom": "westpac:BankingScheduledPaymentFrom",
+    "BankingInternationalPayee_beneficiaryDetails": "westpac:BankingInternationalPayee_beneficiaryDetails",
+    "message": {
+      "@id": "westpac:message",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingInstalmentPlanList": "westpac:ResponseBankingInstalmentPlanList",
+    "BankingDomesticPayeeCard": "westpac:BankingDomesticPayeeCard",
+    "cardNumber": {
+      "@id": "westpac:cardNumber",
+      "@type": "xsd:string"
+    },
+    "BankingScheduledPaymentInterval": "westpac:BankingScheduledPaymentInterval",
+    "dayInInterval": {
+      "@id": "westpac:dayInInterval",
+      "@type": "xsd:string"
+    },
+    "BankingInternationalPayee_bankDetails_bankAddress": "westpac:BankingInternationalPayee_bankDetails_bankAddress",
+    "address": {
+      "@id": "westpac:address",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingScheduledPaymentsListV2_data": "westpac:ResponseBankingScheduledPaymentsListV2_data",
+    "scheduledPayments": {
+      "@id": "westpac:scheduledPayments",
+      "@container": "@list"
+    },
+    "BankingScheduledPaymentRecurrence": "westpac:BankingScheduledPaymentRecurrence",
+    "nextPaymentDate": {
+      "@id": "westpac:nextPaymentDate",
+      "@type": "xsd:string"
+    },
+    "recurrenceUType": {
+      "@id": "westpac:recurrenceUType",
+      "@type": "xsd:string"
+    },
+    "onceOff": {
+      "@id": "westpac:onceOff",
+      "@type": "@id"
+    },
+    "intervalSchedule": {
+      "@id": "westpac:intervalSchedule",
+      "@type": "@id"
+    },
+    "eventBased": {
+      "@id": "westpac:eventBased",
+      "@type": "@id"
+    },
+    "BankingScheduledPaymentRecurrenceIntervalSchedule": "westpac:BankingScheduledPaymentRecurrenceIntervalSchedule",
+    "intervals": {
+      "@id": "westpac:intervals",
+      "@container": "@list"
+    },
+    "BankingScheduledPaymentRecurrenceEventBased": "westpac:BankingScheduledPaymentRecurrenceEventBased",
+    "BankingScheduledPaymentToV2": "westpac:BankingScheduledPaymentToV2",
+    "toUType": {
+      "@id": "westpac:toUType",
+      "@type": "xsd:string"
+    },
+    "payeeId": {
+      "@id": "westpac:payeeId"
+    },
+    "digitalWallet": {
+      "@id": "westpac:digitalWallet",
+      "@type": "@id"
+    },
+    "domestic": {
+      "@id": "westpac:domestic",
+      "@type": "@id"
+    },
+    "biller": {
+      "@id": "westpac:biller",
+      "@type": "@id"
+    },
+    "international": {
+      "@id": "westpac:international",
+      "@type": "@id"
+    },
+    "BankingDigitalWalletPayee": "westpac:BankingDigitalWalletPayee",
+    "provider": {
+      "@id": "westpac:provider",
+      "@type": "xsd:string"
+    },
+    "BankingInternationalPayee": "westpac:BankingInternationalPayee",
+    "beneficiaryDetails": {
+      "@id": "westpac:beneficiaryDetails",
+      "@type": "@id"
+    },
+    "bankDetails": {
+      "@id": "westpac:bankDetails",
+      "@type": "@id"
+    },
+    "BankingTransactionV2": "westpac:BankingTransactionV2",
+    "transactionId": {
+      "@id": "westpac:transactionId"
+    },
+    "isDetailAvailable": {
+      "@id": "westpac:isDetailAvailable",
+      "@type": "xsd:boolean"
+    },
+    "postingDateTime": {
+      "@id": "westpac:postingDateTime",
+      "@type": "xsd:string"
+    },
+    "valueDateTime": {
+      "@id": "westpac:valueDateTime",
+      "@type": "xsd:string"
+    },
+    "executionDateTime": {
+      "@id": "westpac:executionDateTime",
+      "@type": "xsd:string"
+    },
+    "reference": {
+      "@id": "westpac:reference",
+      "@type": "xsd:string"
+    },
+    "instalmentPlanId": {
+      "@id": "westpac:instalmentPlanId"
+    },
+    "apcaNumber": {
+      "@id": "westpac:apcaNumber",
+      "@type": "xsd:string"
+    },
+    "NppPaymentService": "westpac:NppPaymentService",
+    "BankingTransactionDetailV3_allOf": "westpac:BankingTransactionDetailV3_allOf",
+    "extendedData": {
+      "@id": "westpac:extendedData",
+      "@type": "@id"
+    },
+    "BankingTransactionDetailV3_allOf_extendedData_nppPayload": "westpac:BankingTransactionDetailV3_allOf_extendedData_nppPayload",
+    "extendedDescription": {
+      "@id": "westpac:extendedDescription",
+      "@type": "xsd:string"
+    },
+    "endToEndId": {
+      "@id": "westpac:endToEndId",
+      "@type": "xsd:string"
+    },
+    "purposeCode": {
+      "@id": "westpac:purposeCode",
+      "@type": "xsd:string"
+    },
+    "service": {
+      "@id": "westpac:service",
+      "@type": "@id"
+    },
+    "serviceVersion": {
+      "@id": "westpac:serviceVersion",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingTransactionListV2": "westpac:ResponseBankingTransactionListV2",
+    "ResponseBankingTransactionListV2_data": "westpac:ResponseBankingTransactionListV2_data",
+    "transactions": {
+      "@id": "westpac:transactions",
+      "@container": "@list"
+    },
+    "MetaPaginatedTransaction_allOf": "westpac:MetaPaginatedTransaction_allOf",
+    "isQueryParamUnsupported": {
+      "@id": "westpac:isQueryParamUnsupported",
+      "@type": "xsd:boolean"
+    },
+    "BankingTransactionDetailV3_allOf_extendedData": "westpac:BankingTransactionDetailV3_allOf_extendedData",
+    "payer": {
+      "@id": "westpac:payer",
+      "@type": "xsd:string"
+    },
+    "payee": {
+      "@id": "westpac:payee",
+      "@type": "xsd:string"
+    },
+    "extensionUType": {
+      "@id": "westpac:extensionUType",
+      "@type": "xsd:string"
+    },
+    "nppPayload": {
+      "@id": "westpac:nppPayload",
+      "@type": "@id"
+    },
+    "ResponseBankingTransactionByIdV3": "westpac:ResponseBankingTransactionByIdV3",
+    "BankingProductFeeV2": "westpac:BankingProductFeeV2",
+    "feeType": {
+      "@id": "westpac:feeType",
+      "@type": "xsd:string"
+    },
+    "feeMethodUType": {
+      "@id": "westpac:feeMethodUType",
+      "@type": "xsd:string"
+    },
+    "fixedAmount": {
+      "@id": "westpac:fixedAmount"
+    },
+    "rateBased": {
+      "@id": "westpac:rateBased"
+    },
+    "variable": {
+      "@id": "westpac:variable"
+    },
+    "feeCap": {
+      "@id": "westpac:feeCap",
+      "@type": "xsd:string"
+    },
+    "feeCapPeriod": {
+      "@id": "westpac:feeCapPeriod",
+      "@type": "xsd:string"
+    },
+    "additionalValue": {
+      "@id": "westpac:additionalValue",
+      "@type": "xsd:string"
+    },
+    "additionalInfo": {
+      "@id": "westpac:additionalInfo",
+      "@type": "xsd:string"
+    },
+    "additionalInfoUri": {
+      "@id": "westpac:additionalInfoUri",
+      "@type": "xsd:string"
+    },
+    "discounts": {
+      "@id": "westpac:discounts",
+      "@container": "@list"
+    },
+    "BankingFeeRange": "westpac:BankingFeeRange",
+    "feeMinimum": {
+      "@id": "westpac:feeMinimum",
+      "@type": "xsd:string"
+    },
+    "feeMaximum": {
+      "@id": "westpac:feeMaximum",
+      "@type": "xsd:string"
+    },
+    "BankingProductFeatureV4": "westpac:BankingProductFeatureV4",
+    "featureType": {
+      "@id": "westpac:featureType",
+      "@type": "xsd:string"
+    },
+    "BankingFeeDiscountAmount": "westpac:BankingFeeDiscountAmount",
+    "BankingCreditCardAccount": "westpac:BankingCreditCardAccount",
+    "minPaymentAmount": {
+      "@id": "westpac:minPaymentAmount",
+      "@type": "xsd:string"
+    },
+    "paymentDueAmount": {
+      "@id": "westpac:paymentDueAmount",
+      "@type": "xsd:string"
+    },
+    "paymentCurrency": {
+      "@id": "westpac:paymentCurrency",
+      "@type": "xsd:string"
+    },
+    "paymentDueDate": {
+      "@id": "westpac:paymentDueDate",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingAccountListV3": "westpac:ResponseBankingAccountListV3",
+    "BankingProductLendingRateV3": "westpac:BankingProductLendingRateV3",
+    "lendingRateType": {
+      "@id": "westpac:lendingRateType",
+      "@type": "xsd:string"
+    },
+    "rate": {
+      "@id": "westpac:rate",
+      "@type": "xsd:string"
+    },
+    "comparisonRate": {
+      "@id": "westpac:comparisonRate",
+      "@type": "xsd:string"
+    },
+    "calculationFrequency": {
+      "@id": "westpac:calculationFrequency",
+      "@type": "xsd:string"
+    },
+    "applicationType": {
+      "@id": "westpac:applicationType",
+      "@type": "xsd:string"
+    },
+    "applicationFrequency": {
+      "@id": "westpac:applicationFrequency",
+      "@type": "xsd:string"
+    },
+    "interestPaymentDue": {
+      "@id": "westpac:interestPaymentDue",
+      "@type": "xsd:string"
+    },
+    "repaymentType": {
+      "@id": "westpac:repaymentType",
+      "@type": "xsd:string"
+    },
+    "loanPurpose": {
+      "@id": "westpac:loanPurpose",
+      "@type": "xsd:string"
+    },
+    "tiers": {
+      "@id": "westpac:tiers",
+      "@container": "@list"
+    },
+    "applicabilityConditions": {
+      "@id": "westpac:applicabilityConditions",
+      "@container": "@list"
+    },
+    "BankingProductDepositRateV2": "westpac:BankingProductDepositRateV2",
+    "depositRateType": {
+      "@id": "westpac:depositRateType",
+      "@type": "xsd:string"
+    },
+    "BankingAccountV3": "westpac:BankingAccountV3",
+    "displayName": {
+      "@id": "westpac:displayName",
+      "@type": "xsd:string"
+    },
+    "openStatus": {
+      "@id": "westpac:openStatus",
+      "@type": "xsd:string"
+    },
+    "isOwned": {
+      "@id": "westpac:isOwned",
+      "@type": "xsd:boolean"
+    },
+    "accountOwnership": {
+      "@id": "westpac:accountOwnership",
+      "@type": "xsd:string"
+    },
+    "maskedNumber": {
+      "@id": "westpac:maskedNumber",
+      "@type": "xsd:string"
+    },
+    "productCategory": {
+      "@id": "westpac:productCategory",
+      "@type": "@id"
+    },
+    "productName": {
+      "@id": "westpac:productName",
+      "@type": "xsd:string"
+    },
+    "isInstalmentDetailAvailable": {
+      "@id": "westpac:isInstalmentDetailAvailable",
+      "@type": "xsd:boolean"
+    },
+    "BankingLoanAccountV3": "westpac:BankingLoanAccountV3",
+    "originalStartDate": {
+      "@id": "westpac:originalStartDate",
+      "@type": "xsd:string"
+    },
+    "originalLoanAmount": {
+      "@id": "westpac:originalLoanAmount",
+      "@type": "xsd:string"
+    },
+    "originalLoanCurrency": {
+      "@id": "westpac:originalLoanCurrency",
+      "@type": "xsd:string"
+    },
+    "loanEndDate": {
+      "@id": "westpac:loanEndDate",
+      "@type": "xsd:string"
+    },
+    "nextInstalmentDate": {
+      "@id": "westpac:nextInstalmentDate",
+      "@type": "xsd:string"
+    },
+    "minInstalmentAmount": {
+      "@id": "westpac:minInstalmentAmount",
+      "@type": "xsd:string"
+    },
+    "minInstalmentCurrency": {
+      "@id": "westpac:minInstalmentCurrency",
+      "@type": "xsd:string"
+    },
+    "maxRedraw": {
+      "@id": "westpac:maxRedraw",
+      "@type": "xsd:string"
+    },
+    "maxRedrawCurrency": {
+      "@id": "westpac:maxRedrawCurrency",
+      "@type": "xsd:string"
+    },
+    "minRedraw": {
+      "@id": "westpac:minRedraw",
+      "@type": "xsd:string"
+    },
+    "minRedrawCurrency": {
+      "@id": "westpac:minRedrawCurrency",
+      "@type": "xsd:string"
+    },
+    "offsetAccountEnabled": {
+      "@id": "westpac:offsetAccountEnabled",
+      "@type": "xsd:boolean"
+    },
+    "offsetAccountIds": {
+      "@id": "westpac:offsetAccountIds",
+      "@container": "@list"
+    },
+    "repaymentFrequency": {
+      "@id": "westpac:repaymentFrequency",
+      "@type": "xsd:string"
+    },
+    "CommonPAFAddress": "westpac:CommonPAFAddress",
+    "dpid": {
+      "@id": "westpac:dpid",
+      "@type": "xsd:string"
+    },
+    "thoroughfareNumber1": {
+      "@id": "westpac:thoroughfareNumber1",
+      "@type": "xsd:integer"
+    },
+    "thoroughfareNumber1Suffix": {
+      "@id": "westpac:thoroughfareNumber1Suffix",
+      "@type": "xsd:string"
+    },
+    "thoroughfareNumber2": {
+      "@id": "westpac:thoroughfareNumber2",
+      "@type": "xsd:integer"
+    },
+    "thoroughfareNumber2Suffix": {
+      "@id": "westpac:thoroughfareNumber2Suffix",
+      "@type": "xsd:string"
+    },
+    "flatUnitType": {
+      "@id": "westpac:flatUnitType",
+      "@type": "xsd:string"
+    },
+    "flatUnitNumber": {
+      "@id": "westpac:flatUnitNumber",
+      "@type": "xsd:string"
+    },
+    "floorLevelType": {
+      "@id": "westpac:floorLevelType",
+      "@type": "xsd:string"
+    },
+    "floorLevelNumber": {
+      "@id": "westpac:floorLevelNumber",
+      "@type": "xsd:string"
+    },
+    "lotNumber": {
+      "@id": "westpac:lotNumber",
+      "@type": "xsd:string"
+    },
+    "buildingName1": {
+      "@id": "westpac:buildingName1",
+      "@type": "xsd:string"
+    },
+    "buildingName2": {
+      "@id": "westpac:buildingName2",
+      "@type": "xsd:string"
+    },
+    "streetName": {
+      "@id": "westpac:streetName",
+      "@type": "xsd:string"
+    },
+    "streetType": {
+      "@id": "westpac:streetType",
+      "@type": "xsd:string"
+    },
+    "streetSuffix": {
+      "@id": "westpac:streetSuffix",
+      "@type": "xsd:string"
+    },
+    "postalDeliveryType": {
+      "@id": "westpac:postalDeliveryType",
+      "@type": "xsd:string"
+    },
+    "postalDeliveryNumber": {
+      "@id": "westpac:postalDeliveryNumber",
+      "@type": "xsd:integer"
+    },
+    "postalDeliveryNumberPrefix": {
+      "@id": "westpac:postalDeliveryNumberPrefix",
+      "@type": "xsd:string"
+    },
+    "postalDeliveryNumberSuffix": {
+      "@id": "westpac:postalDeliveryNumberSuffix",
+      "@type": "xsd:string"
+    },
+    "localityName": {
+      "@id": "westpac:localityName",
+      "@type": "xsd:string"
+    },
+    "postcode": {
+      "@id": "westpac:postcode",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "westpac:state",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingAccountListV3_data": "westpac:ResponseBankingAccountListV3_data",
+    "accounts": {
+      "@id": "westpac:accounts",
+      "@container": "@list"
+    },
+    "BankingProductDiscountEligibility": "westpac:BankingProductDiscountEligibility",
+    "discountEligibilityType": {
+      "@id": "westpac:discountEligibilityType",
+      "@type": "xsd:string"
+    },
+    "CommonSimpleAddress": "westpac:CommonSimpleAddress",
+    "mailingName": {
+      "@id": "westpac:mailingName",
+      "@type": "xsd:string"
+    },
+    "addressLine1": {
+      "@id": "westpac:addressLine1",
+      "@type": "xsd:string"
+    },
+    "addressLine2": {
+      "@id": "westpac:addressLine2",
+      "@type": "xsd:string"
+    },
+    "addressLine3": {
+      "@id": "westpac:addressLine3",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "westpac:city",
+      "@type": "xsd:string"
+    },
+    "BankingFeeRate": "westpac:BankingFeeRate",
+    "rateType": {
+      "@id": "westpac:rateType",
+      "@type": "xsd:string"
+    },
+    "accrualFrequency": {
+      "@id": "westpac:accrualFrequency",
+      "@type": "xsd:string"
+    },
+    "amountRange": {
+      "@id": "westpac:amountRange",
+      "@type": "@id"
+    },
+    "BankingProductRateTierV4": "westpac:BankingProductRateTierV4",
+    "unitOfMeasure": {
+      "@id": "westpac:unitOfMeasure",
+      "@type": "xsd:string"
+    },
+    "minimumValue": {
+      "@id": "westpac:minimumValue",
+      "@type": "xsd:string"
+    },
+    "maximumValue": {
+      "@id": "westpac:maximumValue",
+      "@type": "xsd:string"
+    },
+    "rateApplicationMethod": {
+      "@id": "westpac:rateApplicationMethod",
+      "@type": "xsd:string"
+    },
+    "BankingProductDiscountV2": "westpac:BankingProductDiscountV2",
+    "discountType": {
+      "@id": "westpac:discountType",
+      "@type": "xsd:string"
+    },
+    "discountMethodUType": {
+      "@id": "westpac:discountMethodUType",
+      "@type": "xsd:string"
+    },
+    "eligibility": {
+      "@id": "westpac:eligibility",
+      "@container": "@list"
+    },
+    "BankingProductInstalments": "westpac:BankingProductInstalments",
+    "maximumConcurrentPlans": {
+      "@id": "westpac:maximumConcurrentPlans",
+      "@type": "xsd:integer"
+    },
+    "instalmentsLimit": {
+      "@id": "westpac:instalmentsLimit",
+      "@type": "xsd:string"
+    },
+    "minimumPlanValue": {
+      "@id": "westpac:minimumPlanValue",
+      "@type": "xsd:string"
+    },
+    "maximumPlanValue": {
+      "@id": "westpac:maximumPlanValue",
+      "@type": "xsd:string"
+    },
+    "minimumSplit": {
+      "@id": "westpac:minimumSplit",
+      "@type": "xsd:integer"
+    },
+    "maximumSplit": {
+      "@id": "westpac:maximumSplit",
+      "@type": "xsd:integer"
+    },
+    "BankingFeeAmount": "westpac:BankingFeeAmount",
+    "BankingProductRateConditionV2": "westpac:BankingProductRateConditionV2",
+    "rateApplicabilityType": {
+      "@id": "westpac:rateApplicabilityType",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingAccountByIdV5": "westpac:ResponseBankingAccountByIdV5",
+    "BankingAccountDetailV5_allOf": "westpac:BankingAccountDetailV5_allOf",
+    "bundleName": {
+      "@id": "westpac:bundleName",
+      "@type": "xsd:string"
+    },
+    "instalments": {
+      "@id": "westpac:instalments",
+      "@type": "@id"
+    },
+    "specificAccountUType": {
+      "@id": "westpac:specificAccountUType",
+      "@type": "xsd:string"
+    },
+    "termDeposit": {
+      "@id": "westpac:termDeposit",
+      "@container": "@list"
+    },
+    "creditCard": {
+      "@id": "westpac:creditCard"
+    },
+    "loan": {
+      "@id": "westpac:loan"
+    },
+    "depositRate": {
+      "@id": "westpac:depositRate",
+      "@type": "xsd:string"
+    },
+    "lendingRate": {
+      "@id": "westpac:lendingRate",
+      "@type": "xsd:string"
+    },
+    "depositRates": {
+      "@id": "westpac:depositRates",
+      "@container": "@list"
+    },
+    "lendingRates": {
+      "@id": "westpac:lendingRates",
+      "@container": "@list"
+    },
+    "features": {
+      "@id": "westpac:features",
+      "@container": "@list"
+    },
+    "fees": {
+      "@id": "westpac:fees",
+      "@container": "@list"
+    },
+    "addresses": {
+      "@id": "westpac:addresses",
+      "@container": "@list"
+    },
+    "BankingTermDepositAccount": "westpac:BankingTermDepositAccount",
+    "lodgementDate": {
+      "@id": "westpac:lodgementDate",
+      "@type": "xsd:string"
+    },
+    "maturityDate": {
+      "@id": "westpac:maturityDate",
+      "@type": "xsd:string"
+    },
+    "maturityAmount": {
+      "@id": "westpac:maturityAmount",
+      "@type": "xsd:string"
+    },
+    "maturityCurrency": {
+      "@id": "westpac:maturityCurrency",
+      "@type": "xsd:string"
+    },
+    "maturityInstructions": {
+      "@id": "westpac:maturityInstructions",
+      "@type": "xsd:string"
+    },
+    "BankingFeeDiscountRate": "westpac:BankingFeeDiscountRate",
+    "CommonPhysicalAddress": "westpac:CommonPhysicalAddress",
+    "addressUType": {
+      "@id": "westpac:addressUType",
+      "@type": "xsd:string"
+    },
+    "simple": {
+      "@id": "westpac:simple",
+      "@type": "@id"
+    },
+    "paf": {
+      "@id": "westpac:paf",
+      "@type": "@id"
+    },
+    "BankingFeeDiscountRange": "westpac:BankingFeeDiscountRange",
+    "discountMinimum": {
+      "@id": "westpac:discountMinimum",
+      "@type": "xsd:string"
+    },
+    "discountMaximum": {
+      "@id": "westpac:discountMaximum",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingPayeeListV2_data": "westpac:ResponseBankingPayeeListV2_data",
+    "payees": {
+      "@id": "westpac:payees",
+      "@container": "@list"
+    },
+    "BankingPayeeDetailV2_allOf": "westpac:BankingPayeeDetailV2_allOf",
+    "payeeUType": {
+      "@id": "westpac:payeeUType",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingPayeeListV2": "westpac:ResponseBankingPayeeListV2",
+    "BankingPayeeV2": "westpac:BankingPayeeV2",
+    "ResponseBankingPayeeByIdV2": "westpac:ResponseBankingPayeeByIdV2",
+    "BankingProductDetailV7_allOf": "westpac:BankingProductDetailV7_allOf",
+    "bundles": {
+      "@id": "westpac:bundles",
+      "@container": "@list"
+    },
+    "constraints": {
+      "@id": "westpac:constraints",
+      "@container": "@list"
+    },
+    "BankingProductEligibilityV2": "westpac:BankingProductEligibilityV2",
+    "eligibilityType": {
+      "@id": "westpac:eligibilityType",
+      "@type": "xsd:string"
+    },
+    "BankingProductAdditionalInformationV2": "westpac:BankingProductAdditionalInformationV2",
+    "overviewUri": {
+      "@id": "westpac:overviewUri",
+      "@type": "xsd:string"
+    },
+    "termsUri": {
+      "@id": "westpac:termsUri",
+      "@type": "xsd:string"
+    },
+    "eligibilityUri": {
+      "@id": "westpac:eligibilityUri",
+      "@type": "xsd:string"
+    },
+    "feesAndPricingUri": {
+      "@id": "westpac:feesAndPricingUri",
+      "@type": "xsd:string"
+    },
+    "bundleUri": {
+      "@id": "westpac:bundleUri",
+      "@type": "xsd:string"
+    },
+    "additionalOverviewUris": {
+      "@id": "westpac:additionalOverviewUris",
+      "@container": "@list"
+    },
+    "additionalTermsUris": {
+      "@id": "westpac:additionalTermsUris",
+      "@container": "@list"
+    },
+    "additionalEligibilityUris": {
+      "@id": "westpac:additionalEligibilityUris",
+      "@container": "@list"
+    },
+    "additionalFeesAndPricingUris": {
+      "@id": "westpac:additionalFeesAndPricingUris",
+      "@container": "@list"
+    },
+    "additionalBundleUris": {
+      "@id": "westpac:additionalBundleUris",
+      "@container": "@list"
+    },
+    "BankingProductCardArt": "westpac:BankingProductCardArt",
+    "cardScheme": {
+      "@id": "westpac:cardScheme",
+      "@type": "xsd:string"
+    },
+    "cardType": {
+      "@id": "westpac:cardType",
+      "@type": "xsd:string"
+    },
+    "imageUri": {
+      "@id": "westpac:imageUri",
+      "@type": "xsd:string"
+    },
+    "BankingProductV6": "westpac:BankingProductV6",
+    "productId": {
+      "@id": "westpac:productId",
+      "@type": "xsd:string"
+    },
+    "effectiveFrom": {
+      "@id": "westpac:effectiveFrom",
+      "@type": "xsd:string"
+    },
+    "effectiveTo": {
+      "@id": "westpac:effectiveTo",
+      "@type": "xsd:string"
+    },
+    "lastUpdated": {
+      "@id": "westpac:lastUpdated",
+      "@type": "xsd:string"
+    },
+    "brand": {
+      "@id": "westpac:brand",
+      "@type": "xsd:string"
+    },
+    "brandName": {
+      "@id": "westpac:brandName",
+      "@type": "xsd:string"
+    },
+    "brandGroup": {
+      "@id": "westpac:brandGroup",
+      "@type": "xsd:string"
+    },
+    "applicationUri": {
+      "@id": "westpac:applicationUri",
+      "@type": "xsd:string"
+    },
+    "isTailored": {
+      "@id": "westpac:isTailored",
+      "@type": "xsd:boolean"
+    },
+    "additionalInformation": {
+      "@id": "westpac:additionalInformation",
+      "@type": "@id"
+    },
+    "cardArt": {
+      "@id": "westpac:cardArt",
+      "@container": "@list"
+    },
+    "BankingProductAdditionalInformationV2_additionalInformationUris": "westpac:BankingProductAdditionalInformationV2_additionalInformationUris",
+    "ResponseBankingProductListV4_data": "westpac:ResponseBankingProductListV4_data",
+    "products": {
+      "@id": "westpac:products",
+      "@container": "@list"
+    },
+    "ResponseBankingProductByIdV7": "westpac:ResponseBankingProductByIdV7",
+    "BankingProductConstraintV3": "westpac:BankingProductConstraintV3",
+    "constraintType": {
+      "@id": "westpac:constraintType",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingProductListV4": "westpac:ResponseBankingProductListV4",
+    "BankingProductBundle": "westpac:BankingProductBundle",
+    "productIds": {
+      "@id": "westpac:productIds",
+      "@container": "@list"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Westpac API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Westpac's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-20) from openapi/westpac-banking-account-balances-api-openapi.yml, openapi/westpac-banking-account-direct-debits-api-openapi.yml, openapi/westpac-banking-account-scheduled-payments-api-openapi.yml.",
+  "dcterms:created": "2026-10-20",
+  "dcterms:source": [
+    "openapi/westpac-banking-account-balances-api-openapi.yml",
+    "openapi/westpac-banking-account-direct-debits-api-openapi.yml",
+    "openapi/westpac-banking-account-scheduled-payments-api-openapi.yml",
+    "openapi/westpac-banking-account-transactions-api-openapi.yml",
+    "openapi/westpac-banking-accounts-api-openapi.yml"
+  ]
+}

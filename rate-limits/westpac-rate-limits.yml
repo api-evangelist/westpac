@@ -1,0 +1,22 @@
+name: Westpac rate limits
+generated: '2026-10-20'
+method: searched
+source: https://quickstream.westpac.com.au/docs/quickstreamapi/v1/
+limit_count: 1
+limits:
+- name: QuickStream REST API concurrent requests
+  kind: concurrency
+  max: 10
+  scope: per-facility (unstated)
+  api: QuickStream REST API v1
+  limit_text: If you send more than 10 simultaneous requests, you may receive this response code.
+  status: 429
+signals:
+  status_on_exhaustion: 429
+  headers: []
+  retry_guidance: 'If you receive one of these responses, wait 20 seconds and then resend the request with the same
+    Idempotency-Key : 429 Too Many Requests 503 Service Unavailable'
+note: The only published limit is QuickStream's concurrency ceiling. No per-window quota and no RateLimit/X-RateLimit/Retry-After
+  headers are documented. 429 is also returned when a POST is resent with an Idempotency-Key still being processed.
+  Westpac publishes no limits for its CDR endpoints; CDR traffic thresholds come from the Consumer Data Standards
+  non-functional requirements.

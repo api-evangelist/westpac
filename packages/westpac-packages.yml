@@ -1,0 +1,33 @@
+generated: '2026-10-20'
+method: searched
+source: https://quickstream.westpac.com.au/docs/quickstreamapi/sdks/react-native/reference/
+note: >-
+  First-party client packages for Westpac's QuickStream payment gateway. The
+  QuickStream React Native SDK reference imports both packages below by name
+  (e.g. `import { WestpacProvider } from "@westpac-developer/react-native-sdk"`).
+  Versions and dates read from registry.npmjs.org on 2026-10-20. The npm
+  records carry no repository, homepage or license field. No first-party
+  package was found for the CDR Product Reference Data / Banking APIs, which are
+  the shared DSB Consumer Data Standards contract. QuickStream-API.js (browser
+  library) is CDN-served and is recorded in components/westpac-components.yml.
+  Westpac's @westpac/* npm scope (GEL design system, github.com/WestpacGEL) is
+  a UI design system, not an API client, and is not listed here.
+packages:
+  - name: '@westpac-developer/react-native-sdk'
+    registry: npm
+    url: https://www.npmjs.com/package/@westpac-developer/react-native-sdk
+    language: TypeScript/JavaScript (React Native)
+    official: true
+    version: 2.0.0
+    published: '2026-05-07'
+    description: Payment Sheet UI and WestpacProvider for QuickStream payments in native Android and iOS apps.
+    docs: https://quickstream.westpac.com.au/docs/quickstreamapi/sdks/react-native/
+  - name: '@westpac-developer/react-native-core'
+    registry: npm
+    url: https://www.npmjs.com/package/@westpac-developer/react-native-core
+    language: TypeScript/JavaScript (React Native)
+    official: true
+    version: 2.0.0
+    published: '2026-05-07'
+    description: Core components for custom payment flows (Custom UI) against the QuickStream gateway.
+    docs: https://quickstream.westpac.com.au/docs/quickstreamapi/sdks/react-native/custom-ui/

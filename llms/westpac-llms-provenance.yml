@@ -1,0 +1,6 @@
+generated: '2026-10-20'
+method: probed
+generator: harvest-llms.py
+source: https://www.westpac.com.au/llms.txt
+bytes: 7204
+note: saved verbatim; the provider's own document
