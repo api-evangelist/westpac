@@ -1,4 +1,4 @@
-# Westpac Banking Corporation (westpac)
+# Westpac
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,60 +64,190 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Westpac Banking Corporation is Australia's oldest bank and company, founded in 1817 as the Bank of New South Wales, and is one of the country's "Big Four" banks. Headquartered in Sydney, it is a publicly listed company on the Australian Securities Exchange (ASX:WBC) — not a customer-owned mutual — and operates a multi-brand group that includes St.George, BankSA, Bank of Melbourne, and RAMS. As an authorised deposit-taking institution (ADI), Westpac is a designated data holder under Australia's Consumer Data Right (CDR / Open Banking) and exposes a public, unauthenticated Product Reference Data (PRD) API.
+Westpac Banking Corporation is Australia's oldest bank and company, founded in 1817 as the Bank of New South Wales, and is one of the country's "Big Four" banks. Headquartered in Sydney, it is a publicly listed company on the Australian Securities Exchange (ASX:WBC), not a customer-owned mutual, and operates a multi-brand group that includes St.George, BankSA, Bank of Melbourne, and RAMS. As an authorised deposit-taking institution (ADI) regulated by APRA, Westpac is a designated data holder under Australia's Consumer Data Right (CDR / Open Banking) regime and exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the DSB Consumer Data Standards. Consumer and account data sharing beyond product reference data is available only to accredited data recipients through the CDR's authenticated, consent-driven channels.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/westpac/refs/heads/main/apis.yml)
+**Areas:** Finance · Banks · Open Banking · CDR · Consumer Banking · Australia · Product Reference Data · ADI
 
-## Tags
+## Westpac on APIs.io
 
-- Financial
-- Banks
-- Open Banking
-- CDR
-- Consumer Banking
-- Australia
-- Product Reference Data
-- ADI
+Everything profiled for Westpac is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/westpac/](https://apis.io/providers/westpac/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (9)
 
-- **Created:** 2026-07-20
-- **Modified:** 2026-07-20
+- [Westpac PayWay REST API](https://apis.io/apis/westpac/westpac-payway-rest-api/) — First-party Westpac payment API (beyond CDR). PayWay is Westpac's merchant payment platform; its public REST API v1 processes real-time credit-card and…
+- [Westpac QuickStream REST API](https://apis.io/apis/westpac/westpac-quickstream-rest-api/) — First-party Westpac payment API (beyond CDR). QuickStream is Westpac's online payment gateway; its public REST API v1 exposes Transactions, Customers,…
+- [Westpac Banking Corporation Banking Account Balances API](https://apis.io/apis/westpac/westpac-banking-account-balances-api/) — Banking Account Balance endpoints
+- [Westpac Banking Corporation Banking Account Direct Debits API](https://apis.io/apis/westpac/westpac-banking-account-direct-debits-api/) — Banking Account Direct Debit endpoints
+- [Westpac Banking Corporation Banking Account Scheduled Payments API](https://apis.io/apis/westpac/westpac-banking-account-scheduled-payments-api/) — Banking Account Scheduled Payment endpoints
+- [Westpac Banking Corporation Banking Account Transactions API](https://apis.io/apis/westpac/westpac-banking-account-transactions-api/) — Banking Account Transaction endpoints
+- [Westpac Banking Corporation Banking Accounts API](https://apis.io/apis/westpac/westpac-banking-accounts-api/) — Banking Account endpoints
+- [Westpac Banking Corporation Banking Payees API](https://apis.io/apis/westpac/westpac-banking-payees-api/) — Banking Payee endpoints
+- [Westpac Banking Corporation Banking Products API](https://apis.io/apis/westpac/westpac-banking-products-api/) — Banking Product endpoints
 
-## APIs
+### Published properties
 
-### Westpac Banking Corporation CDR Product Reference Data API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Public, unauthenticated Product Reference Data (PRD) API exposing Westpac's banking product catalogue (rates, fees, features, eligibility) under Australia's Consumer Data Right. Confirmed live returning HTTP 200 with a `data.products` array — 64 total product records across Westpac Group brands — served at supported version `x-v: 5`. No security or other headers are required to call this API. Conforms to the DSB Consumer Data Standards Get Products / Get Product Detail contract.
+#### MCP servers (1)
 
-- **Human URL:** [https://www.westpac.com.au/about-westpac/innovation/open-banking/product-api/](https://www.westpac.com.au/about-westpac/innovation/open-banking/product-api/)
-- **Base URL:** `https://digital-api.westpac.com.au/cds-au/v1/banking/products`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [westpac-cdr-products](https://apis.io/servers/westpac/westpac-cdr-products/)
 
-- CDR
-- Open Banking
-- Product Reference Data
-- Banking
-- Australia
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://www.westpac.com.au/about-westpac/innovation/open-banking/product-api/)
-- [API Reference](https://consumerdatastandardsaustralia.github.io/standards/) — Consumer Data Standards (DSB)
-- [OpenAPI](openapi/westpac-cds-banking-products-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Westpac Agentic Access](https://apis.io/agentic-access/westpac/westpac-agentic-access/)
 
-## Common Properties
+#### JSON Schema (13)
+
+The data models the API reads and writes.
+
+- [ResponseBankingAccountByIdV5](https://apis.io/schemas/westpac/westpac-response-banking-account-by-id-v5/)
+- [ResponseBankingAccountListV3](https://apis.io/schemas/westpac/westpac-response-banking-account-list-v3/)
+- [ResponseBankingAccountsBalanceById](https://apis.io/schemas/westpac/westpac-response-banking-accounts-balance-by-id/)
+- [ResponseBankingAccountsBalanceList](https://apis.io/schemas/westpac/westpac-response-banking-accounts-balance-list/)
+- [ResponseBankingDirectDebitAuthorisationList](https://apis.io/schemas/westpac/westpac-response-banking-direct-debit-authorisation-list/)
+- [ResponseBankingInstalmentPlanList](https://apis.io/schemas/westpac/westpac-response-banking-instalment-plan-list/)
+- [ResponseBankingPayeeByIdV2](https://apis.io/schemas/westpac/westpac-response-banking-payee-by-id-v2/)
+- [ResponseBankingPayeeListV2](https://apis.io/schemas/westpac/westpac-response-banking-payee-list-v2/)
+- [ResponseBankingProductByIdV7](https://apis.io/schemas/westpac/westpac-response-banking-product-by-id-v7/)
+- [ResponseBankingProductListV4](https://apis.io/schemas/westpac/westpac-response-banking-product-list-v4/)
+- [ResponseBankingScheduledPaymentsListV2](https://apis.io/schemas/westpac/westpac-response-banking-scheduled-payments-list-v2/)
+- [ResponseBankingTransactionByIdV3](https://apis.io/schemas/westpac/westpac-response-banking-transaction-by-id-v3/)
+- [ResponseBankingTransactionListV2](https://apis.io/schemas/westpac/westpac-response-banking-transaction-list-v2/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Westpac Context](https://apis.io/jsonld/westpac/westpac-context/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [CDR Banking Banking Account Balances API](https://apis.io/collections/westpac/open-westpac-banking-account-balances-api/)
+- [CDR Banking Banking Account Balances Banking Account Direct Debits API](https://apis.io/collections/westpac/open-westpac-banking-account-direct-debits-api/)
+- [CDR Banking Banking Account Balances Banking Account Scheduled Payments API](https://apis.io/collections/westpac/open-westpac-banking-account-scheduled-payments-api/)
+- [CDR Banking Banking Account Balances Banking Account Transactions API](https://apis.io/collections/westpac/open-westpac-banking-account-transactions-api/)
+- [CDR Banking Banking Account Balances Banking Accounts API](https://apis.io/collections/westpac/open-westpac-banking-accounts-api/)
+- [CDR Banking Banking Account Balances Banking Payees API](https://apis.io/collections/westpac/open-westpac-banking-payees-api/)
+- [CDR Banking Banking Account Balances Banking Products API](https://apis.io/collections/westpac/open-westpac-banking-products-api/)
+
+#### Overlays (7)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Westpac Banking Account Balances Api Overlay](https://apis.io/overlays/westpac/westpac-banking-account-balances-api-overlay/)
+- [Westpac Banking Account Direct Debits Api Overlay](https://apis.io/overlays/westpac/westpac-banking-account-direct-debits-api-overlay/)
+- [Westpac Banking Account Scheduled Payments Api Overlay](https://apis.io/overlays/westpac/westpac-banking-account-scheduled-payments-api-overlay/)
+- [Westpac Banking Account Transactions Api Overlay](https://apis.io/overlays/westpac/westpac-banking-account-transactions-api-overlay/)
+- [Westpac Banking Accounts Api Overlay](https://apis.io/overlays/westpac/westpac-banking-accounts-api-overlay/)
+- [Westpac Banking Payees Api Overlay](https://apis.io/overlays/westpac/westpac-banking-payees-api-overlay/)
+- [Westpac Banking Products Api Overlay](https://apis.io/overlays/westpac/westpac-banking-products-api-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Westpac API Rules](https://apis.io/rules/westpac/westpac-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Westpac Authentication](https://apis.io/security/westpac/westpac-authentication/)
+- [Westpac Domain Security](https://apis.io/security/westpac/westpac-domain-security/)
+- [Westpac Vulnerability Disclosure](https://apis.io/security/westpac/westpac-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Westpac Scopes](https://apis.io/scopes/westpac/westpac-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Westpac Plans Pricing](https://apis.io/plans/westpac/westpac-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Westpac Rate Limits](https://apis.io/rate-limits/westpac/westpac-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.westpac.com.au/)
-- [Developer Portal](https://www.westpac.com.au/about-westpac/innovation/open-banking/)
 - [Documentation](https://www.westpac.com.au/about-westpac/innovation/open-banking/product-api/)
-- [GitHub Organization](https://github.com/westpac)
-- [LinkedIn](https://www.linkedin.com/company/westpac)
-- [Privacy Policy](https://www.westpac.com.au/privacy/privacy-statement/)
-- [Terms of Service (CDR Policy)](https://www.westpac.com.au/content/dam/public/wbc/documents/pdf/aw/WBC_CDR_Policy.pdf)
+- [Getting started](https://quickstream.westpac.com.au/docs/)
+- [API reference](https://quickstream.westpac.com.au/docs/quickstreamapi/v1/)
+- [Support](https://www.westpac.com.au/contact-us/)
+- [Blog](https://www.westpac.com.au/news/)
+- [Security](https://www.westpac.com.au/security/how-to-report/responsible-disclosure.html)
+- [Compliance](https://quickstream.westpac.com.au/docs/general/pci-compliance/)
+- [Terms of service](https://www.westpac.com.au/terms-and-conditions/)
+- [Privacy policy](https://www.westpac.com.au/privacy/privacy-statement/)
+- [GitHub](https://github.com/westpac)
+- [Status](https://qvalent.statuspage.io/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 62.3** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 61.4 |
+| Contract governance | 22.0 |
+| Operational transparency | 73.7 |
+| Developer ergonomics | 78.0 |
+| Access clarity | 42.1 |
+
+**Agent readiness 31.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 48.0** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/westpac/](https://apis.io/providers/westpac/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Westpac: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/westpac/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
